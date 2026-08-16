@@ -317,7 +317,7 @@ body.lang-locked { overflow: hidden; }
   color: var(--brand-cream);
   line-height: 1.15;
 }
-.lang-overlay-line[lang="ar"] { font-family: "Baloo Bhaijaan 2", ui-rounded, sans-serif; font-weight: 800; letter-spacing: normal; line-height: 1.3; }
+.lang-overlay-line[lang="ar"] { font-family: "Baloo Bhaijaan 2", ui-rounded, sans-serif; font-weight: 800; letter-spacing: normal; line-height: 1.75; }
 .lang-overlay-actions {
   display: flex;
   gap: var(--space-sm);
@@ -1285,21 +1285,26 @@ body.lang-locked { overflow: hidden; }
   font-weight: 800;
 }
 
-/* Baloo Bhaijaan 2's own vertical metrics (ascent+descent) measure ~1.7x
-   its em-size — Arabic letterforms simply need more vertical room than
-   Daddy Cartoon's compact cartoon shapes, which is what these line-heights
-   (as tight as 1.02–1.15) were tuned for. At those ratios, tall Arabic
-   letter combinations on one wrapped line collide with the line below —
-   the "letters overriding each other" glyph-overlap bug. Loosen every
-   selector that carries an explicit tight line-height with translated
-   Arabic text; headings without an explicit line-height already inherit
-   the body's generous 1.6 and don't need an override. */
-[dir="rtl"] .hero-headline-name { line-height: 1.35; }
+/* Baloo Bhaijaan 2's own vertical metrics (hhea ascent 1080 + descent 632,
+   on a 1000-unit em) measure ~1.71x its em-size — that's the line-height
+   below which SOME pair of glyphs, on some line-break, WILL collide; it
+   isn't a stylistic choice to fudge. An earlier pass here used ~1.3, which
+   happened to clear the specific wraps first tested but still collided at
+   other viewport widths once the text re-wrapped onto a different pair of
+   lines — different words end up stacked, exposing a different worst-case
+   glyph pair each time. 1.75 sits just above the font's own safe minimum,
+   so no wrap width can expose a collision. Applies to every selector that
+   carries an explicit tight line-height with translated Arabic text;
+   headings without an explicit line-height already inherit the body's
+   generous 1.6 and don't need an override. */
+[dir="rtl"] .hero-headline-name,
 [dir="rtl"] .section-heading h2,
-[dir="rtl"] .menu-hero-title { line-height: 1.3; }
-[dir="rtl"] .card-name { line-height: 1.35; }
-[dir="rtl"] .menu-category-title { line-height: 1.3; }
-[dir="rtl"] .logo-text { line-height: 1.3; }
+[dir="rtl"] .menu-hero-title,
+[dir="rtl"] .card-name,
+[dir="rtl"] .menu-category-title,
+[dir="rtl"] .logo-text {
+  line-height: 1.75;
+}
 
 /* Letter-spacing gives the Latin/uppercase type some air in English, but it
    fights Arabic's cursive letter-joining — spaced-out Arabic reads as
