@@ -3,24 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Menu — Don Chicko</title>
-<meta name="description" content="Don Chicko's full menu: broasted and roasted chicken, sandwiches, burgers, starters, rice, house sauces and desserts. Grilled or fried, always cooked to the center.">
+<title data-i18n="meta.titleMenu">The Menu — Don Chicko</title>
+<meta name="description" data-i18n-attr-content="meta.descriptionMenu" content="Don Chicko's full menu: broasted and roasted chicken, sandwiches, burgers, starters, rice, house sauces and desserts. Grilled or fried, always cooked to the center.">
 <link rel="icon" type="image/png" href="assets/logos/flame-color.png">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
 <!-- Skip link for keyboard/screen reader users -->
-<a class="skip-link" href="#main-content">Skip to main content</a>
+<a class="skip-link" href="#main-content" data-i18n="a11y.skipLink">Skip to main content</a>
+
+<!-- ============================= -->
+<!-- LANGUAGE SELECTION OVERLAY — shown once, before first visit; choice is
+     remembered in localStorage from then on. Bilingual by design, so it
+     reads correctly to a visitor before any language has been chosen. -->
+<!-- ============================= -->
+<div id="langOverlay" class="lang-overlay" role="dialog" aria-modal="true" aria-label="Choose your language / اختر لغتك">
+  <div class="lang-overlay-inner">
+    <img class="lang-overlay-mark flame-shape" src="assets/logos/flame-white.png" alt="" aria-hidden="true">
+    <h1 class="lang-overlay-title">
+      <span class="lang-overlay-line" lang="en">Choose Your Language</span>
+      <span class="lang-overlay-line" lang="ar" dir="rtl">اختر لغتك</span>
+    </h1>
+    <div class="lang-overlay-actions">
+      <button type="button" class="lang-overlay-btn" data-lang-choice="ar" lang="ar" dir="rtl">عربي</button>
+      <button type="button" class="lang-overlay-btn" data-lang-choice="en" lang="en">English</button>
+    </div>
+  </div>
+</div>
 
 <!-- ============================= -->
 <!-- NAVIGATION -->
 <!-- ============================= -->
 <header class="site-header">
   <nav class="navbar" aria-label="Primary">
-    <a href="index.html" class="logo" aria-label="Don Chicko — home">
+    <a href="index.html" class="logo" data-i18n-attr-aria-label="a11y.homeLabel" aria-label="Don Chicko — home">
       <img class="logo-mark" src="assets/logos/flame-color.png" alt="" aria-hidden="true">
-      <span class="logo-text">DON CHICKO</span>
+      <span class="logo-text" data-i18n="brand.name">DON CHICKO</span>
     </a>
 
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryMenu" aria-label="Open menu">
@@ -30,11 +49,15 @@
     </button>
 
     <ul class="nav-menu" id="primaryMenu">
-      <li><a href="index.html" class="nav-link">Home</a></li>
-      <li><a href="menu.html" class="nav-link" aria-current="page">Menu</a></li>
-      <li><a href="index.html#about" class="nav-link">Our Story</a></li>
-      <li><a href="index.html#visit" class="nav-link">Visit</a></li>
-      <li><a href="index.html#visit" class="nav-link nav-cta">Find Us</a></li>
+      <li><a href="index.html" class="nav-link" data-i18n="nav.home">Home</a></li>
+      <li><a href="menu.html" class="nav-link" aria-current="page" data-i18n="nav.menu">Menu</a></li>
+      <li><a href="index.html#about" class="nav-link" data-i18n="nav.story">Our Story</a></li>
+      <li><a href="index.html#visit" class="nav-link" data-i18n="nav.visit">Visit</a></li>
+      <li><a href="index.html#visit" class="nav-link nav-cta" data-i18n="nav.findUs">Find Us</a></li>
+      <li class="lang-switch" role="group" data-i18n-attr-aria-label="a11y.switchLanguage" aria-label="Switch language">
+        <button type="button" class="lang-switch-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-switch-btn" data-lang="ar">AR</button>
+      </li>
     </ul>
   </nav>
 </header>
@@ -51,9 +74,9 @@
       <span class="menu-hero-flame menu-hero-flame-3 flame-shape"></span>
     </div>
     <div class="menu-hero-inner">
-      <p class="eyebrow">Built on Four Flames</p>
-      <h1 class="menu-hero-title">The Menu</h1>
-      <p class="menu-hero-copy">
+      <p class="eyebrow" data-i18n="menuPage.eyebrow">Built on Four Flames</p>
+      <h1 class="menu-hero-title" data-i18n="menuPage.title">The Menu</h1>
+      <p class="menu-hero-copy" data-i18n="menuPage.copy">
         Every category, straight from Don Chicko's own recipe board.
         Grilled or fried — always marinated to the center.
       </p>
@@ -77,7 +100,7 @@
       <!-- Category sections + cards injected by JavaScript -->
     </div>
 
-    <p class="menu-note">
+    <p class="menu-note" data-i18n-html="menuPage.noteHtml">
       Prices shown in Iraqi Dinar. Menu subject to change — follow
       <a href="https://instagram.com/donchicko" target="_blank" rel="noopener">@donchicko</a>
       for new arrivals.
@@ -91,29 +114,30 @@
 <!-- ============================= -->
 <footer class="site-footer">
   <div class="footer-top">
-    <a href="index.html" class="logo footer-logo" aria-label="Don Chicko — home">
+    <a href="index.html" class="logo footer-logo" data-i18n-attr-aria-label="a11y.homeLabel" aria-label="Don Chicko — home">
       <img src="assets/logos/wordmark-white.png" alt="Don Chicko">
       <img class="footer-logo-ar" src="assets/logos/wordmark-arabic-white.png" alt="دون تشيكو">
     </a>
 
     <ul class="footer-nav">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="menu.html">Menu</a></li>
-      <li><a href="index.html#about">Our Story</a></li>
-      <li><a href="index.html#visit">Visit</a></li>
+      <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+      <li><a href="menu.html" data-i18n="nav.menu">Menu</a></li>
+      <li><a href="index.html#about" data-i18n="nav.story">Our Story</a></li>
+      <li><a href="index.html#visit" data-i18n="nav.visit">Visit</a></li>
     </ul>
 
     <ul class="footer-social">
-      <li><a href="https://instagram.com/donchicko" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://instagram.com/donchicko" target="_blank" rel="noopener" data-i18n="footer.social">Instagram</a></li>
     </ul>
   </div>
 
   <div class="footer-bottom">
-    <p>Baghdad, Iraq</p>
-    <p>&copy; <span id="footerYear"></span> Don Chicko. Built on four flames.</p>
+    <p data-i18n="footer.location">Baghdad, Iraq</p>
+    <p>&copy; <span id="footerYear"></span> <span data-i18n="footer.copyright">Don Chicko. Built on four flames.</span></p>
   </div>
 </footer>
 
-<script src="script.js?v=2"></script>
+<script src="translations.js?v=1"></script>
+<script src="script.js?v=3"></script>
 </body>
 </html>

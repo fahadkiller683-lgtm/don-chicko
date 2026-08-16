@@ -3,24 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Don Chicko — Grilled or Fried, Always Unforgettable</title>
-<meta name="description" content="Don Chicko: Baghdad's chicken experience that stays with you. Grilled or fried, marinated to the center, built on four flames — Passion, Precision, Togetherness, Character.">
+<title data-i18n="meta.titleHome">Don Chicko — Grilled or Fried, Always Unforgettable</title>
+<meta name="description" data-i18n-attr-content="meta.descriptionHome" content="Don Chicko: Baghdad's chicken experience that stays with you. Grilled or fried, marinated to the center, built on four flames — Passion, Precision, Togetherness, Character.">
 <link rel="icon" type="image/png" href="assets/logos/flame-color.png">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
 <!-- Skip link for keyboard/screen reader users -->
-<a class="skip-link" href="#main-content">Skip to main content</a>
+<a class="skip-link" href="#main-content" data-i18n="a11y.skipLink">Skip to main content</a>
+
+<!-- ============================= -->
+<!-- LANGUAGE SELECTION OVERLAY — shown once, before first visit; choice is
+     remembered in localStorage from then on. Bilingual by design, so it
+     reads correctly to a visitor before any language has been chosen. -->
+<!-- ============================= -->
+<div id="langOverlay" class="lang-overlay" role="dialog" aria-modal="true" aria-label="Choose your language / اختر لغتك">
+  <div class="lang-overlay-inner">
+    <img class="lang-overlay-mark flame-shape" src="assets/logos/flame-white.png" alt="" aria-hidden="true">
+    <h1 class="lang-overlay-title">
+      <span class="lang-overlay-line" lang="en">Choose Your Language</span>
+      <span class="lang-overlay-line" lang="ar" dir="rtl">اختر لغتك</span>
+    </h1>
+    <div class="lang-overlay-actions">
+      <button type="button" class="lang-overlay-btn" data-lang-choice="ar" lang="ar" dir="rtl">عربي</button>
+      <button type="button" class="lang-overlay-btn" data-lang-choice="en" lang="en">English</button>
+    </div>
+  </div>
+</div>
 
 <!-- ============================= -->
 <!-- NAVIGATION -->
 <!-- ============================= -->
 <header class="site-header">
   <nav class="navbar" aria-label="Primary">
-    <a href="#home" class="logo" aria-label="Don Chicko — home">
+    <a href="#home" class="logo" data-i18n-attr-aria-label="a11y.homeLabel" aria-label="Don Chicko — home">
       <img class="logo-mark" src="assets/logos/flame-color.png" alt="" aria-hidden="true">
-      <span class="logo-text">DON CHICKO</span>
+      <span class="logo-text" data-i18n="brand.name">DON CHICKO</span>
     </a>
 
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryMenu" aria-label="Open menu">
@@ -30,11 +49,15 @@
     </button>
 
     <ul class="nav-menu" id="primaryMenu">
-      <li><a href="#home" class="nav-link">Home</a></li>
-      <li><a href="menu.html" class="nav-link">Menu</a></li>
-      <li><a href="#about" class="nav-link">Our Story</a></li>
-      <li><a href="#visit" class="nav-link">Visit</a></li>
-      <li><a href="#visit" class="nav-link nav-cta">Find Us</a></li>
+      <li><a href="#home" class="nav-link" data-i18n="nav.home">Home</a></li>
+      <li><a href="menu.html" class="nav-link" data-i18n="nav.menu">Menu</a></li>
+      <li><a href="#about" class="nav-link" data-i18n="nav.story">Our Story</a></li>
+      <li><a href="#visit" class="nav-link" data-i18n="nav.visit">Visit</a></li>
+      <li><a href="#visit" class="nav-link nav-cta" data-i18n="nav.findUs">Find Us</a></li>
+      <li class="lang-switch" role="group" data-i18n-attr-aria-label="a11y.switchLanguage" aria-label="Switch language">
+        <button type="button" class="lang-switch-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-switch-btn" data-lang="ar">AR</button>
+      </li>
     </ul>
   </nav>
 </header>
@@ -46,7 +69,7 @@
   <!-- ============================= -->
   <section id="home" class="hero">
     <div class="hero-photo">
-      <img src="assets/images/hero-chicken-tenders.jpg" alt="Crispy chicken tenders and fries with ketchup and mayo, on a dark scorched-orange surface">
+      <img src="assets/images/hero-chicken-tenders.jpg" data-i18n-attr-alt="hero.photoAlt" alt="Crispy chicken tenders and fries with ketchup and mayo, on a dark scorched-orange surface">
     </div>
     <div class="hero-decor" aria-hidden="true">
       <span class="hero-flame hero-flame-1 flame-shape"></span>
@@ -56,18 +79,18 @@
 
     <div class="hero-inner">
       <div class="hero-content">
-        <p class="eyebrow hero-eyebrow">Grilled or Fried</p>
+        <p class="eyebrow hero-eyebrow" data-i18n="hero.eyebrow">Grilled or Fried</p>
         <h1 class="hero-headline">
-          <span class="hero-headline-name">The Chicken You <span class="hl-orange">Never Knew</span> You Needed</span>
-          <span class="hero-headline-sub">Always unforgettable. Always cooked to the center.</span>
+          <span class="hero-headline-name" data-i18n-html="hero.headlineHtml">The Chicken You <span class="hl-orange">Never Knew</span> You Needed</span>
+          <span class="hero-headline-sub" data-i18n="hero.headlineSub">Always unforgettable. Always cooked to the center.</span>
         </h1>
-        <p class="hero-copy">
+        <p class="hero-copy" data-i18n="hero.copy">
           Built on trust. Made with depth. Served with pride. Don Chicko is the chicken
           experience that stays with you — born in Baghdad, made for everywhere.
         </p>
         <div class="hero-actions">
-          <a href="menu.html" class="btn btn-primary">See the Menu</a>
-          <a href="#about" class="btn btn-secondary">Our Story</a>
+          <a href="menu.html" class="btn btn-primary" data-i18n="hero.ctaMenu">See the Menu</a>
+          <a href="#about" class="btn btn-secondary" data-i18n="hero.ctaStory">Our Story</a>
         </div>
       </div>
     </div>
@@ -78,9 +101,9 @@
   <!-- ============================= -->
   <section id="featured" class="featured-section">
     <div class="section-heading">
-      <p class="eyebrow">Straight From the Flame</p>
-      <h2>The Don's Picks</h2>
-      <p class="section-subtitle">Three from the fire, chosen by the Don himself.</p>
+      <p class="eyebrow" data-i18n="featured.eyebrow">Straight From the Flame</p>
+      <h2 data-i18n="featured.title">The Don's Picks</h2>
+      <p class="section-subtitle" data-i18n="featured.subtitle">Three from the fire, chosen by the Don himself.</p>
     </div>
 
     <div class="featured-grid" id="featuredGrid" aria-label="Featured menu items">
@@ -88,7 +111,7 @@
     </div>
 
     <div class="featured-cta">
-      <a href="menu.html" class="btn btn-primary">See the Full Menu</a>
+      <a href="menu.html" class="btn btn-primary" data-i18n="featured.cta">See the Full Menu</a>
     </div>
   </section>
 
@@ -98,57 +121,57 @@
   <section id="about" class="about-section">
     <div class="about-top">
       <div class="about-visual">
-        <img src="assets/images/grilled-chicken-skillet.jpg" alt="Grilled Don Chicko chicken with herbs, tomatoes and fresh bread, plated on a sizzling skillet">
+        <img src="assets/images/grilled-chicken-skillet.jpg" data-i18n-attr-alt="about.visualAlt" alt="Grilled Don Chicko chicken with herbs, tomatoes and fresh bread, plated on a sizzling skillet">
         <div class="about-visual-badge">
           <span class="flame-shape" aria-hidden="true"></span>
-          <span>Made by the Don</span>
+          <span data-i18n="about.visualBadge">Made by the Don</span>
         </div>
       </div>
 
       <div class="about-content">
-        <p class="eyebrow">Our Story</p>
-        <h2>Baghdad, Let's Rise</h2>
-        <p class="about-lede">
+        <p class="eyebrow" data-i18n="about.eyebrow">Our Story</p>
+        <h2 data-i18n="about.title">Baghdad, Let's Rise</h2>
+        <p class="about-lede" data-i18n="about.lede">
           Nobody knows exactly who he is. Some say he ran a spice route between Beirut and
           Basra. Others say he's an old soul chasing the perfect bite. One thing is certain:
           Don Chicko is Baghdadi — and he lives for chicken.
         </p>
-        <p>
+        <p data-i18n="about.body">
           Not the ordinary kind. The kind you bite once and never forget. Crispy or grilled,
           skin or center — he wanted it all to hit right. So he did what every good chef does:
           he built a fire. Not just any fire — he lit it with four flames.
         </p>
         <div class="about-stat">
           <span class="about-stat-number">4</span>
-          <span class="about-stat-label">Friends.<br>One flame.</span>
+          <span class="about-stat-label" data-i18n-html="about.statLabelHtml">Friends.<br>One flame.</span>
         </div>
       </div>
     </div>
 
     <div class="flames-heading">
-      <p class="eyebrow">The Flames</p>
-      <h3>Everything we do comes from one of these four</h3>
+      <p class="eyebrow" data-i18n="about.flamesEyebrow">The Flames</p>
+      <h3 data-i18n="about.flamesTitle">Everything we do comes from one of these four</h3>
     </div>
     <div class="flames-grid">
       <article class="flame-card">
         <span class="flame-card-icon flame-shape" aria-hidden="true"></span>
-        <h4>Flame of Passion</h4>
-        <p>Chicken done right — juicy, crispy, unforgettable. Marinated to the center, not just the skin.</p>
+        <h4 data-i18n="about.flame1Title">Flame of Passion</h4>
+        <p data-i18n="about.flame1Desc">Chicken done right — juicy, crispy, unforgettable. Marinated to the center, not just the skin.</p>
       </article>
       <article class="flame-card">
         <span class="flame-card-icon flame-shape" aria-hidden="true"></span>
-        <h4>Flame of Precision</h4>
-        <p>Care. Timing. Temperature. Sequence. Good chicken can't save bad execution.</p>
+        <h4 data-i18n="about.flame2Title">Flame of Precision</h4>
+        <p data-i18n="about.flame2Desc">Care. Timing. Temperature. Sequence. Good chicken can't save bad execution.</p>
       </article>
       <article class="flame-card">
         <span class="flame-card-icon flame-shape" aria-hidden="true"></span>
-        <h4>Flame of Togetherness</h4>
-        <p>No vision comes to life alone. Dishes made to be shared, at a table that feels like home.</p>
+        <h4 data-i18n="about.flame3Title">Flame of Togetherness</h4>
+        <p data-i18n="about.flame3Desc">No vision comes to life alone. Dishes made to be shared, at a table that feels like home.</p>
       </article>
       <article class="flame-card">
         <span class="flame-card-icon flame-shape" aria-hidden="true"></span>
-        <h4>Flame of Character</h4>
-        <p>The Baghdadi spirit — bold, rooted, unmistakable. When you have your own flavor, you don't need to shout.</p>
+        <h4 data-i18n="about.flame4Title">Flame of Character</h4>
+        <p data-i18n="about.flame4Desc">The Baghdadi spirit — bold, rooted, unmistakable. When you have your own flavor, you don't need to shout.</p>
       </article>
     </div>
   </section>
@@ -158,31 +181,31 @@
   <!-- ============================= -->
   <section id="visit" class="visit-section">
     <div class="section-heading">
-      <p class="eyebrow">Come Through</p>
-      <h2>Find Us</h2>
+      <p class="eyebrow" data-i18n="visit.eyebrow">Come Through</p>
+      <h2 data-i18n="visit.title">Find Us</h2>
     </div>
 
     <div class="visit-grid">
       <div class="visit-info">
         <div class="visit-item">
-          <h3>Location</h3>
-          <p>Baghdad, Iraq<br>Exact address dropping soon.</p>
+          <h3 data-i18n="visit.locationTitle">Location</h3>
+          <p data-i18n-html="visit.locationBodyHtml">Baghdad, Iraq<br>Exact address dropping soon.</p>
         </div>
         <div class="visit-item">
-          <h3>Follow</h3>
+          <h3 data-i18n="visit.followTitle">Follow</h3>
           <ul class="social-list">
-            <li><a href="https://instagram.com/donchicko" target="_blank" rel="noopener">Instagram — @donchicko</a></li>
+            <li><a href="https://instagram.com/donchicko" target="_blank" rel="noopener" data-i18n="visit.instagramLabel">Instagram — @donchicko</a></li>
           </ul>
         </div>
         <div class="visit-item">
-          <h3>What's Cooking</h3>
-          <p>We're firing up the kitchen. Follow along for opening updates and the first taste of Don Chicko.</p>
+          <h3 data-i18n="visit.cookingTitle">What's Cooking</h3>
+          <p data-i18n="visit.cookingBody">We're firing up the kitchen. Follow along for opening updates and the first taste of Don Chicko.</p>
         </div>
       </div>
 
       <div class="visit-visual">
         <span class="flame-shape" aria-hidden="true"></span>
-        <p class="visit-visual-label">Opening Soon<br>in Baghdad</p>
+        <p class="visit-visual-label" data-i18n-html="visit.visualLabelHtml">Opening Soon<br>in Baghdad</p>
       </div>
     </div>
   </section>
@@ -194,29 +217,30 @@
 <!-- ============================= -->
 <footer class="site-footer">
   <div class="footer-top">
-    <a href="#home" class="logo footer-logo" aria-label="Don Chicko — home">
+    <a href="#home" class="logo footer-logo" data-i18n-attr-aria-label="a11y.homeLabel" aria-label="Don Chicko — home">
       <img src="assets/logos/wordmark-white.png" alt="Don Chicko">
       <img class="footer-logo-ar" src="assets/logos/wordmark-arabic-white.png" alt="دون تشيكو">
     </a>
 
     <ul class="footer-nav">
-      <li><a href="#home">Home</a></li>
-      <li><a href="menu.html">Menu</a></li>
-      <li><a href="#about">Our Story</a></li>
-      <li><a href="#visit">Visit</a></li>
+      <li><a href="#home" data-i18n="nav.home">Home</a></li>
+      <li><a href="menu.html" data-i18n="nav.menu">Menu</a></li>
+      <li><a href="#about" data-i18n="nav.story">Our Story</a></li>
+      <li><a href="#visit" data-i18n="nav.visit">Visit</a></li>
     </ul>
 
     <ul class="footer-social">
-      <li><a href="https://instagram.com/donchicko" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://instagram.com/donchicko" target="_blank" rel="noopener" data-i18n="footer.social">Instagram</a></li>
     </ul>
   </div>
 
   <div class="footer-bottom">
-    <p>Baghdad, Iraq</p>
-    <p>&copy; <span id="footerYear"></span> Don Chicko. Built on four flames.</p>
+    <p data-i18n="footer.location">Baghdad, Iraq</p>
+    <p>&copy; <span id="footerYear"></span> <span data-i18n="footer.copyright">Don Chicko. Built on four flames.</span></p>
   </div>
 </footer>
 
-<script src="script.js?v=2"></script>
+<script src="translations.js?v=1"></script>
+<script src="script.js?v=3"></script>
 </body>
 </html>

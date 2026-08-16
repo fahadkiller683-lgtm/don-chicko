@@ -259,6 +259,107 @@ button { font: inherit; cursor: pointer; }
 }
 
 /* ==========================================================================
+   LANGUAGE OVERLAY — shown once, on first visit, until a choice is saved
+   ========================================================================== */
+body.lang-locked { overflow: hidden; }
+
+.lang-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-ink);
+  padding: var(--space-md);
+  opacity: 1;
+  transition: opacity var(--duration-med) var(--ease-standard);
+}
+.lang-overlay.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.lang-overlay-inner {
+  text-align: center;
+  max-width: 420px;
+}
+.lang-overlay-mark {
+  width: 56px;
+  height: 68px;
+  margin: 0 auto var(--space-md);
+  color: var(--brand-orange);
+}
+.lang-overlay-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: var(--space-lg);
+}
+.lang-overlay-line {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw + 1rem, 2.4rem);
+  color: var(--brand-cream);
+  line-height: 1.15;
+}
+.lang-overlay-line[lang="ar"] { font-family: var(--font-body); font-weight: 700; }
+.lang-overlay-actions {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.lang-overlay-btn {
+  min-width: 150px;
+  padding: 1rem 1.75rem;
+  font-size: 1.1rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  border-radius: 999px;
+  border: var(--border-thick) solid var(--brand-cream);
+  background: transparent;
+  color: var(--brand-cream);
+  transition: transform var(--duration-fast) var(--ease-bounce),
+              background var(--duration-fast), color var(--duration-fast),
+              box-shadow var(--duration-fast) var(--ease-standard);
+}
+.lang-overlay-btn:hover, .lang-overlay-btn:focus-visible {
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+  color: var(--color-ink);
+  transform: translateY(-2px);
+  box-shadow: 5px 5px 0 rgba(246, 243, 234, 0.35);
+}
+
+/* ==========================================================================
+   LANGUAGE SWITCHER — small EN/AR toggle, lives in the nav
+   ========================================================================== */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  border: 2px solid var(--color-ink);
+  border-radius: 999px;
+  padding: 0.2rem;
+}
+.lang-switch-btn {
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-ink-soft);
+  border: none;
+  transition: background var(--duration-fast), color var(--duration-fast);
+}
+.lang-switch-btn.is-active {
+  background: var(--brand-maroon);
+  color: var(--brand-cream);
+}
+.lang-switch-btn:hover:not(.is-active) { color: var(--color-ink); }
+
+/* ==========================================================================
    NAVIGATION
    ========================================================================== */
 .site-header {
@@ -1110,6 +1211,10 @@ button { font: inherit; cursor: pointer; }
     justify-content: center;
     display: flex;
   }
+  .lang-switch {
+    align-self: flex-start;
+    margin-top: var(--space-sm);
+  }
 
   .hero-photo img { object-position: 50% 30%; }
   .flames-grid { grid-template-columns: 1fr; }
@@ -1121,4 +1226,76 @@ button { font: inherit; cursor: pointer; }
   .btn { width: 100%; }
   .hero-actions { flex-direction: column; }
   .section-heading { padding: 0 var(--space-xs); }
+}
+
+/* ==========================================================================
+   RTL — Arabic layout.
+   Most of the site mirrors for free: block boxes anchor to the inline-start
+   edge, CSS Grid renumbers its columns, and flexbox "row" already reads from
+   the direction property — all direction-aware by default. What's listed
+   here is only what those defaults don't already handle: physical left/right
+   values, decorative elements meant to face a specific way, and the display
+   font's lack of Arabic glyphs.
+   ========================================================================== */
+[dir="rtl"] {
+  direction: rtl;
+}
+
+[dir="rtl"] .skip-link {
+  left: auto;
+  right: -999px;
+  border-radius: 0 0 0 var(--radius-sm);
+}
+[dir="rtl"] .skip-link:focus { right: 0; left: auto; }
+
+[dir="rtl"] .menu-category-count {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Hero photo, its dark-to-transparent gradient, and the decorative flames
+   mirror together so the legible dark side still sits behind the copy,
+   which itself moves to the right automatically in RTL. */
+[dir="rtl"] .hero-photo,
+[dir="rtl"] .hero-decor,
+[dir="rtl"] .menu-hero-decor {
+  transform: scaleX(-1);
+}
+
+/* Badge stays pinned to the visual's bottom-inline-end corner either way. */
+[dir="rtl"] .about-visual-badge {
+  left: auto;
+  right: var(--space-sm);
+  padding: 0.4rem 0.4rem 0.4rem 0.9rem;
+}
+
+/* The extra breathing room next to the Arabic wordmark flips sides with it. */
+[dir="rtl"] .footer-logo-ar {
+  margin-left: 0;
+  margin-right: 0.3rem;
+}
+
+/* Cosmetic tilts read more natural mirrored. */
+[dir="rtl"] .card-price { transform: rotate(-3deg); }
+[dir="rtl"] .filter-tab:hover { transform: translateY(-2px) rotate(1deg); }
+[dir="rtl"] .featured-grid .ticket-card:nth-child(1) { --hover-rotate: 2deg; transform: rotate(1.5deg); }
+[dir="rtl"] .featured-grid .ticket-card:nth-child(2) { --hover-rotate: -1.5deg; transform: rotate(-1deg); }
+[dir="rtl"] .featured-grid .ticket-card:nth-child(3) { --hover-rotate: 1deg; transform: rotate(0.75deg); }
+[dir="rtl"] .about-stat { transform: rotate(1deg); }
+
+/* Daddy Cartoon (the brand display font) has no Arabic glyphs and silently
+   falls back past it; switch translated headings straight to the Arabic-
+   capable body stack instead of letting the browser guess. */
+[dir="rtl"] .logo-text,
+[dir="rtl"] .hero-headline-name,
+[dir="rtl"] .section-heading h2,
+[dir="rtl"] .about-content h2,
+[dir="rtl"] .flames-heading h3,
+[dir="rtl"] .menu-hero-title,
+[dir="rtl"] .menu-category-title,
+[dir="rtl"] .card-name,
+[dir="rtl"] .flame-card h4,
+[dir="rtl"] .visit-visual-label {
+  font-family: var(--font-body);
+  font-weight: 800;
 }
