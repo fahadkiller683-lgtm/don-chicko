@@ -1241,6 +1241,27 @@ body.lang-locked { overflow: hidden; }
   direction: rtl;
 }
 
+/* Letter-spacing gives the Latin/uppercase type some air in English, but it
+   fights Arabic's cursive letter-joining — spaced-out Arabic reads as
+   disconnected letters instead of words. Every selector below sets
+   letter-spacing for English; switch it back to normal for Arabic. */
+[dir="rtl"] .eyebrow,
+[dir="rtl"] .section-heading h2,
+[dir="rtl"] .btn,
+[dir="rtl"] .logo-text,
+[dir="rtl"] .nav-link,
+[dir="rtl"] .nav-cta,
+[dir="rtl"] .hero-headline-name,
+[dir="rtl"] .card-badge,
+[dir="rtl"] .card-category,
+[dir="rtl"] .filter-tab,
+[dir="rtl"] .menu-category-count,
+[dir="rtl"] .about-stat-label,
+[dir="rtl"] .footer-nav,
+[dir="rtl"] .footer-social {
+  letter-spacing: normal;
+}
+
 [dir="rtl"] .skip-link {
   left: auto;
   right: -999px;

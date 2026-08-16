@@ -28,9 +28,9 @@ const MENU_ITEMS = [
   { name: "Breaded Mozzarella Sticks", nameAr: "أصابع موزاريلا مقرمشة", description: "Crisp shell, molten center.", descAr: "قشرة مقرمشة وحشوة ذائبة.", price: 5000, category: "hot-starters", tags: ["Popular"], featured: false },
   { name: "Chicken Fingers", nameAr: "أصابع دجاج", description: "Hand-breaded chicken fingers, fried to order.", descAr: "أصابع دجاج مقرمشة، مقلية عند الطلب.", price: 5500, category: "hot-starters", tags: [], featured: false },
   { name: "Chicken Dumplings", nameAr: "دمبلنغز الدجاج", description: "Pan-fried chicken dumplings, served hot.", descAr: "دمبلنغز دجاج مقلي على الصاج، يُقدَّم ساخنًا.", price: 5000, category: "hot-starters", tags: [], featured: false },
-  { name: "Chicken Chimichinga", nameAr: "تشيميتشينغا الدجاج", description: "Rolled, fried, and packed with seasoned chicken.", descAr: "ملفوفة ومقلية ومحشوة بالدجاج المتبّل.", price: 5500, category: "hot-starters", tags: ["New"], featured: false },
-  { name: "Spicy Chicken Flautas", nameAr: "فلوتاس الدجاج الحار", description: "Crisp rolled tortillas with spicy chicken filling.", descAr: "تورتيلا ملفوفة ومقرمشة بحشوة دجاج حارة.", price: 5500, category: "hot-starters", tags: ["New"], featured: false },
-  { name: "Chicken Arepas", nameAr: "أريباس الدجاج", description: "Griddled corn cakes stuffed with seasoned chicken.", descAr: "أقراص ذرة مشوية محشوة بالدجاج المتبّل.", price: 5000, category: "hot-starters", tags: [], featured: false },
+  { name: "Chicken Chimichinga", nameAr: "تشيميتشينغا دجاج", description: "Rolled, fried, and packed with seasoned chicken.", descAr: "ملفوفة ومقلية ومحشوة بالدجاج المتبّل.", price: 5500, category: "hot-starters", tags: ["New"], featured: false },
+  { name: "Spicy Chicken Flautas", nameAr: "فلوتاس دجاج حار", description: "Crisp rolled tortillas with spicy chicken filling.", descAr: "تورتيلا ملفوفة ومقرمشة بحشوة دجاج حارة.", price: 5500, category: "hot-starters", tags: ["New"], featured: false },
+  { name: "Chicken Arepas", nameAr: "أريباس دجاج", description: "Griddled corn cakes stuffed with seasoned chicken.", descAr: "أقراص ذرة مشوية محشوة بالدجاج المتبّل.", price: 5000, category: "hot-starters", tags: [], featured: false },
 
   // ---- Broasted Chicken (fried, signature) ----
   { name: "Broasted — 4 Pieces", nameAr: "بروستد – 4 قطع", description: "Don Chicko's signature broasted chicken. Marinated to the center, always.", descAr: "دجاج دون تشيكو البروستد المميز. متبّل حتى المنتصف، دائمًا.", price: 9000, category: "broasted", tags: [], featured: false },
@@ -45,10 +45,10 @@ const MENU_ITEMS = [
 
   // ---- Sandwiches ----
   { name: "Chicken Beiruti", nameAr: "دجاج بيروتي", description: "A Beiruti-style chicken sandwich, Don Chicko's way.", descAr: "سندويش دجاج على الطريقة البيروتية، بأسلوب دون تشيكو.", price: 6000, category: "sandwiches", tags: ["Popular"], featured: true },
-  { name: "Tawook – Spiedes", nameAr: "طاووق – اسياخ", description: "Skewered, marinated chicken tawook.", descAr: "طاووق دجاج متبّل على السيخ.", price: 6500, category: "sandwiches", tags: [], featured: false },
-  { name: "Chicken Parmesan Subs", nameAr: "صب دجاج بارميزان", description: "Breaded chicken, melted cheese, classic sub roll.", descAr: "دجاج مقرمش، جبن ذائب، خبز صب كلاسيكي.", price: 7000, category: "sandwiches", tags: [], featured: false },
+  { name: "Tawook – Spiedes", nameAr: "طاووق – أسياخ", description: "Skewered, marinated chicken tawook.", descAr: "طاووق دجاج متبّل على السيخ.", price: 6500, category: "sandwiches", tags: [], featured: false },
+  { name: "Chicken Parmesan Subs", nameAr: "سندويش دجاج بارميزان", description: "Breaded chicken, melted cheese, classic sub roll.", descAr: "دجاج مقرمش، جبن ذائب، خبز ساندويتش كلاسيكي.", price: 7000, category: "sandwiches", tags: [], featured: false },
   { name: "Souvlaki", nameAr: "سوفلاكي", description: "Grilled chicken souvlaki, wrapped up.", descAr: "سوفلاكي دجاج مشوي، ملفوف.", price: 6500, category: "sandwiches", tags: [], featured: false },
-  { name: "Chicken Burritos Mojados", nameAr: "بوريتو الدجاج الرطب", description: "A \"wet\" chicken burrito, sauced and loaded.", descAr: "بوريتو دجاج \"رطب\"، مغمور بالصلصة ومحمّل بالحشوة.", price: 7500, category: "sandwiches", tags: ["New"], featured: false },
+  { name: "Chicken Burritos Mojados", nameAr: "بوريتو دجاج رطب", description: "A \"wet\" chicken burrito, sauced and loaded.", descAr: "بوريتو دجاج \"رطب\"، مغمور بالصلصة ومحمّل بالحشوة.", price: 7500, category: "sandwiches", tags: ["New"], featured: false },
   { name: "Pulled Chicken BBQ", nameAr: "دجاج مسحوب بصلصة الباربكيو", description: "Slow-pulled chicken in Don Chicko's BBQ sauce.", descAr: "دجاج مسحوب ببطء بصلصة الباربكيو الخاصة بدون تشيكو.", price: 7000, category: "sandwiches", tags: [], featured: false },
   { name: "Texas-Size BBQ Chicken & Cheddar", nameAr: "باربكيو دجاج وتشيدر بحجم تكساس", description: "Big BBQ chicken sandwich, loaded with cheddar.", descAr: "سندويش دجاج باربكيو كبير، محمّل بجبن التشيدر.", price: 8000, category: "sandwiches", tags: ["New"], featured: false },
   { name: "Chicken Kebabs BBQ", nameAr: "كباب دجاج بالباربكيو", description: "Chicken kebabs finished in BBQ sauce.", descAr: "كباب دجاج منكّه بصلصة الباربكيو.", price: 7000, category: "sandwiches", tags: [], featured: false },
@@ -67,7 +67,7 @@ const MENU_ITEMS = [
 
   // ---- Sauces & Dips ----
   { name: "Red Dip Plain", nameAr: "صلصة حمراء عادية", description: "A simple, classic red dip.", descAr: "صلصة حمراء كلاسيكية وبسيطة.", price: 1000, category: "sauces", tags: [], featured: false },
-  { name: "Gravy", nameAr: "مرقة (غريفي)", description: "Rich, savory gravy.", descAr: "مرقة غنية ولذيذة.", price: 1000, category: "sauces", tags: [], featured: false },
+  { name: "Gravy", nameAr: "مرقة", description: "Rich, savory gravy.", descAr: "مرقة غنية ولذيذة.", price: 1000, category: "sauces", tags: [], featured: false },
   { name: "Chimichurri", nameAr: "تشيميتشوري", description: "Bright, herby, and a little sharp.", descAr: "نكهة عشبية زاهية وحادة قليلاً.", price: 1500, category: "sauces", tags: [], featured: false },
   { name: "Mushroom Sauce", nameAr: "صلصة الفطر", description: "Earthy mushroom sauce.", descAr: "صلصة فطر بنكهة ترابية.", price: 1500, category: "sauces", tags: [], featured: false },
   { name: "Spicy Honey Dipping Sauce", nameAr: "صلصة العسل الحارة", description: "Sweet heat, built for dipping.", descAr: "حلاوة وحرارة معًا، مثالية للتغميس.", price: 1500, category: "sauces", tags: ["Popular"], featured: false },
@@ -204,9 +204,15 @@ function refreshMenuLanguage() {
   });
 }
 
-/** "3 items" / "1 item" — or the Arabic equivalent. */
+/** "3 items" / "1 item" — or the Arabic equivalent (zero/one/two/few/many all differ). */
 function formatItemCount(count, lang) {
-  if (lang === "ar") return `${count} صنف`;
+  if (lang === "ar") {
+    if (count === 0) return "لا توجد أصناف";
+    if (count === 1) return "صنف واحد";
+    if (count === 2) return "صنفان";
+    if (count >= 3 && count <= 10) return `${count} أصناف`;
+    return `${count} صنفًا`;
+  }
   return `${count} ${count === 1 ? "item" : "items"}`;
 }
 

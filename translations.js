@@ -22,6 +22,9 @@ const translations = {
       closeMenu: "Close menu",
       switchLanguage: "Switch language",
       homeLabel: "Don Chicko — home",
+      primaryNav: "Primary",
+      featuredItems: "Featured menu items",
+      categoryJump: "Jump to a menu category",
     },
     brand: { name: "DON CHICKO" },
     nav: { home: "Home", menu: "Menu", story: "Our Story", visit: "Visit", findUs: "Find Us" },
@@ -81,12 +84,6 @@ const translations = {
       copy: "Every category, straight from Don Chicko's own recipe board. Grilled or fried — always marinated to the center.",
       noteHtml: 'Prices shown in Iraqi Dinar. Menu subject to change — follow <a href="https://instagram.com/donchicko" target="_blank" rel="noopener">@donchicko</a> for new arrivals.',
     },
-    langSelect: {
-      heading: "Choose Your Language",
-      sub: "Select your preferred language to continue",
-      en: "English",
-      ar: "عربي",
-    },
   },
 
   ar: {
@@ -102,6 +99,9 @@ const translations = {
       closeMenu: "أغلق القائمة",
       switchLanguage: "تغيير اللغة",
       homeLabel: "دون تشيكو — الرئيسية",
+      primaryNav: "التنقل الرئيسي",
+      featuredItems: "أطباق مختارة من القائمة",
+      categoryJump: "الانتقال إلى قسم من قائمة الطعام",
     },
     brand: { name: "دون تشيكو" },
     nav: { home: "الرئيسية", menu: "قائمة الطعام", story: "قصتنا", visit: "زورونا", findUs: "موقعنا" },
@@ -110,7 +110,7 @@ const translations = {
       headlineHtml: 'الدجاج الذي <span class="hl-orange">لم تكن تعرف</span> أنك بحاجة إليه',
       headlineSub: "طعم لا يُنسى دائمًا. مطهو حتى المنتصف دائمًا.",
       copy: "مبني على الثقة. مصنوع بعمق. يُقدَّم بفخر. دون تشيكو هو تجربة الدجاج التي تبقى معك — وُلدت في بغداد، وصُنعت لكل مكان.",
-      ctaMenu: "شاهد قائمة الطعام",
+      ctaMenu: "تصفح قائمة الطعام",
       ctaStory: "قصتنا",
       photoAlt: "أصابع دجاج مقرمشة وبطاطا مقلية مع الكاتشب والمايونيز، على سطح داكن بلون البرتقالي المحروق",
     },
@@ -118,7 +118,7 @@ const translations = {
       eyebrow: "مباشرة من النار",
       title: "اختيارات الدون",
       subtitle: "ثلاثة أطباق من النار، اختارها الدون بنفسه.",
-      cta: "شاهد القائمة الكاملة",
+      cta: "تصفح القائمة الكاملة",
     },
     about: {
       eyebrow: "قصتنا",
@@ -160,12 +160,6 @@ const translations = {
       title: "قائمة الطعام",
       copy: "كل صنف، مباشرة من لوحة وصفات دون تشيكو. مشوي أو مقلي — دائمًا متبّل حتى المنتصف.",
       noteHtml: 'الأسعار معروضة بالدينار العراقي. القائمة قابلة للتغيير — تابعوا <a href="https://instagram.com/donchicko" target="_blank" rel="noopener">⁦@donchicko⁩</a> لمعرفة الأصناف الجديدة.',
-    },
-    langSelect: {
-      heading: "اختر لغتك",
-      sub: "اختر لغتك المفضلة للمتابعة",
-      en: "English",
-      ar: "عربي",
     },
   },
 };
