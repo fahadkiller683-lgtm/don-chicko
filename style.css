@@ -2,20 +2,45 @@
    FONTS — Don Chicko official type family.
    Daddy Cartoon = display (logo, headlines, prices, badges)
    Montserrat = body copy, nav, labels
-   Baloo Bhaijaan 2 = Arabic display counterpart to Daddy Cartoon — Daddy
-   Cartoon has zero Arabic glyph coverage (verified against its cmap), so
-   Arabic headings need a real display face of their own rather than
-   silently falling back to a generic system font. Same rounded, bold-by-
-   design family as "Baloo 2", which was already the display stack's
-   second choice below — deliberately paired, not a random substitute.
-   Variable font (weight 400–800 in one file), self-hosted to match every
-   other font on this page.
+   Tufuli Arabic = Arabic display counterpart to Daddy Cartoon. This is the
+   brand's own choice, not a substitute picked for this site — it's the
+   exact font the brand's own designers used for Arabic display type in
+   the real print deliverables (see DC-BILL HOLDER Report.txt, which lists
+   "Tufuli Arabic DEMO Bold" + "Montserrat-Arabic Regular" as the fonts
+   used). Daddy Cartoon itself has zero Arabic glyph coverage, so it can't
+   be reused directly for Arabic headings.
+   NOTE: the source file is named TufuliArabicDEMO-Bold.otf — a demo/trial
+   build from the type foundry. Demo builds are typically licensed for
+   preview only, not production embedding. Self-hosting it here was a
+   deliberate choice made with that risk understood; swap in a fully
+   licensed weight file (same @font-face, same filename or update the src
+   below) once one is purchased.
+   Montserrat Arabic = Arabic body-copy counterpart to Montserrat, from the
+   same brand package (Regular 400 only).
+   Baloo Bhaijaan 2 = free (OFL) fallback for both, in case the demo font
+   is ever pulled — same rounded family as "Baloo 2" in the stack below.
    ========================================================================== */
 @font-face {
   font-family: "Daddy Cartoon";
   src: url("assets/fonts/DaddyCartoon.otf") format("opentype");
   font-weight: 400;
   font-display: swap;
+}
+@font-face {
+  font-family: "Tufuli Arabic";
+  src: url("assets/fonts/TufuliArabic-Bold.woff2") format("woff2");
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC;
+}
+@font-face {
+  font-family: "Montserrat Arabic";
+  src: url("assets/fonts/MontserratArabic-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC;
 }
 @font-face {
   font-family: "Baloo Bhaijaan 2";
@@ -317,7 +342,7 @@ body.lang-locked { overflow: hidden; }
   color: var(--brand-cream);
   line-height: 1.15;
 }
-.lang-overlay-line[lang="ar"] { font-family: "Baloo Bhaijaan 2", ui-rounded, sans-serif; font-weight: 800; letter-spacing: normal; line-height: 1.75; }
+.lang-overlay-line[lang="ar"] { font-family: "Tufuli Arabic", "Baloo Bhaijaan 2", ui-rounded, sans-serif; font-weight: 800; letter-spacing: normal; line-height: 1.25; }
 .lang-overlay-actions {
   display: flex;
   gap: var(--space-sm);
@@ -1255,19 +1280,23 @@ body.lang-locked { overflow: hidden; }
    ========================================================================== */
 [dir="rtl"] {
   direction: rtl;
-  /* Daddy Cartoon has zero Arabic glyph coverage, so every element that
-     reads `var(--font-display)` needs a real Arabic display face instead
-     of silently falling through to a generic system font. Redefining the
-     custom property here (rather than overriding font-family on each of
-     the 16+ selectors that use it) means every current and future display
-     element picks it up automatically. */
-  --font-display: "Baloo Bhaijaan 2", "Daddy Cartoon", ui-rounded, sans-serif;
+  /* Daddy Cartoon and Montserrat have zero Arabic glyph coverage, so every
+     element that reads `var(--font-display)` / `var(--font-body)` needs a
+     real Arabic face instead of silently falling through to a generic
+     system font. Redefining the custom properties here (rather than
+     overriding font-family on each selector that uses them) means every
+     current and future element picks the right one up automatically. */
+  --font-display: "Tufuli Arabic", "Baloo Bhaijaan 2", "Daddy Cartoon", ui-rounded, sans-serif;
+  --font-body: "Montserrat Arabic", "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-label: "Montserrat Arabic", "Montserrat", sans-serif;
 }
 
-/* Baloo Bhaijaan 2 at its default weight reads lighter than Daddy
-   Cartoon's naturally chunky, hand-drawn line — push it to the heavy end
-   of its 400–800 variable range so translated headings and buttons keep
-   the same bold, poster-ish energy as the English version. */
+/* Tufuli Arabic only ships as a single Bold weight, and the Baloo
+   Bhaijaan 2 fallback behind it reads lighter than Daddy Cartoon's
+   naturally chunky, hand-drawn line at its default weight — request 800
+   explicitly (Tufuli's one weight satisfies it regardless; Baloo's
+   400–800 variable range picks its heavy end) so translated headings and
+   buttons keep the same bold, poster-ish energy as the English version. */
 [dir="rtl"] .section-heading h2,
 [dir="rtl"] .logo-text,
 [dir="rtl"] .hero-headline-name,
@@ -1285,25 +1314,26 @@ body.lang-locked { overflow: hidden; }
   font-weight: 800;
 }
 
-/* Baloo Bhaijaan 2's own vertical metrics (hhea ascent 1080 + descent 632,
-   on a 1000-unit em) measure ~1.71x its em-size — that's the line-height
-   below which SOME pair of glyphs, on some line-break, WILL collide; it
-   isn't a stylistic choice to fudge. An earlier pass here used ~1.3, which
-   happened to clear the specific wraps first tested but still collided at
-   other viewport widths once the text re-wrapped onto a different pair of
-   lines — different words end up stacked, exposing a different worst-case
-   glyph pair each time. 1.75 sits just above the font's own safe minimum,
-   so no wrap width can expose a collision. Applies to every selector that
-   carries an explicit tight line-height with translated Arabic text;
-   headings without an explicit line-height already inherit the body's
-   generous 1.6 and don't need an override. */
+/* Every font's vertical metrics (hhea ascent + descent, relative to its
+   em-size) set a line-height floor below which SOME pair of glyphs, on
+   some line-break, WILL collide — it isn't a stylistic choice to fudge.
+   An earlier pass here picked a ratio that happened to clear the specific
+   wrap tested but still collided once the text re-wrapped onto a
+   different pair of lines at another viewport width, stacking a
+   different, taller glyph pair. Tufuli Arabic's own metrics (hhea ascent
+   750 + descent 250 on a 1000-unit em, +100 line gap) put its safe
+   minimum at 1.1 — 1.25 sits comfortably above that, verified against
+   the hero's worst-case wraps at multiple widths. Applies to every
+   selector that carries an explicit tight line-height with translated
+   Arabic text; headings without an explicit line-height already inherit
+   the body's generous 1.6 and don't need an override. */
 [dir="rtl"] .hero-headline-name,
 [dir="rtl"] .section-heading h2,
 [dir="rtl"] .menu-hero-title,
 [dir="rtl"] .card-name,
 [dir="rtl"] .menu-category-title,
 [dir="rtl"] .logo-text {
-  line-height: 1.75;
+  line-height: 1.25;
 }
 
 /* Letter-spacing gives the Latin/uppercase type some air in English, but it
