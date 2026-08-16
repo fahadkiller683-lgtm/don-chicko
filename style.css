@@ -2,12 +2,28 @@
    FONTS — Don Chicko official type family.
    Daddy Cartoon = display (logo, headlines, prices, badges)
    Montserrat = body copy, nav, labels
+   Baloo Bhaijaan 2 = Arabic display counterpart to Daddy Cartoon — Daddy
+   Cartoon has zero Arabic glyph coverage (verified against its cmap), so
+   Arabic headings need a real display face of their own rather than
+   silently falling back to a generic system font. Same rounded, bold-by-
+   design family as "Baloo 2", which was already the display stack's
+   second choice below — deliberately paired, not a random substitute.
+   Variable font (weight 400–800 in one file), self-hosted to match every
+   other font on this page.
    ========================================================================== */
 @font-face {
   font-family: "Daddy Cartoon";
   src: url("assets/fonts/DaddyCartoon.otf") format("opentype");
   font-weight: 400;
   font-display: swap;
+}
+@font-face {
+  font-family: "Baloo Bhaijaan 2";
+  src: url("assets/fonts/BalooBhaijaan2-Variable.woff2") format("woff2-variations");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFC;
 }
 @font-face {
   font-family: "Montserrat";
@@ -301,7 +317,7 @@ body.lang-locked { overflow: hidden; }
   color: var(--brand-cream);
   line-height: 1.15;
 }
-.lang-overlay-line[lang="ar"] { font-family: var(--font-body); font-weight: 700; }
+.lang-overlay-line[lang="ar"] { font-family: "Baloo Bhaijaan 2", ui-rounded, sans-serif; font-weight: 800; letter-spacing: normal; }
 .lang-overlay-actions {
   display: flex;
   gap: var(--space-sm);
@@ -1239,6 +1255,34 @@ body.lang-locked { overflow: hidden; }
    ========================================================================== */
 [dir="rtl"] {
   direction: rtl;
+  /* Daddy Cartoon has zero Arabic glyph coverage, so every element that
+     reads `var(--font-display)` needs a real Arabic display face instead
+     of silently falling through to a generic system font. Redefining the
+     custom property here (rather than overriding font-family on each of
+     the 16+ selectors that use it) means every current and future display
+     element picks it up automatically. */
+  --font-display: "Baloo Bhaijaan 2", "Daddy Cartoon", ui-rounded, sans-serif;
+}
+
+/* Baloo Bhaijaan 2 at its default weight reads lighter than Daddy
+   Cartoon's naturally chunky, hand-drawn line — push it to the heavy end
+   of its 400–800 variable range so translated headings and buttons keep
+   the same bold, poster-ish energy as the English version. */
+[dir="rtl"] .section-heading h2,
+[dir="rtl"] .logo-text,
+[dir="rtl"] .hero-headline-name,
+[dir="rtl"] .card-name,
+[dir="rtl"] .menu-hero-title,
+[dir="rtl"] .menu-category-title,
+[dir="rtl"] .about-content h2,
+[dir="rtl"] .flames-heading h3,
+[dir="rtl"] .flame-card h4,
+[dir="rtl"] .visit-item h3,
+[dir="rtl"] .visit-visual-label,
+[dir="rtl"] .about-visual-badge span,
+[dir="rtl"] .btn,
+[dir="rtl"] .nav-cta {
+  font-weight: 800;
 }
 
 /* Letter-spacing gives the Latin/uppercase type some air in English, but it
@@ -1304,19 +1348,3 @@ body.lang-locked { overflow: hidden; }
 [dir="rtl"] .featured-grid .ticket-card:nth-child(3) { --hover-rotate: 1deg; transform: rotate(0.75deg); }
 [dir="rtl"] .about-stat { transform: rotate(1deg); }
 
-/* Daddy Cartoon (the brand display font) has no Arabic glyphs and silently
-   falls back past it; switch translated headings straight to the Arabic-
-   capable body stack instead of letting the browser guess. */
-[dir="rtl"] .logo-text,
-[dir="rtl"] .hero-headline-name,
-[dir="rtl"] .section-heading h2,
-[dir="rtl"] .about-content h2,
-[dir="rtl"] .flames-heading h3,
-[dir="rtl"] .menu-hero-title,
-[dir="rtl"] .menu-category-title,
-[dir="rtl"] .card-name,
-[dir="rtl"] .flame-card h4,
-[dir="rtl"] .visit-visual-label {
-  font-family: var(--font-body);
-  font-weight: 800;
-}
