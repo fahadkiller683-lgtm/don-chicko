@@ -549,13 +549,25 @@ body.lang-locked { overflow: hidden; }
   overflow: hidden;
 }
 /* Auto-sliding hero background — four independently-animated slides, each
-   its own full-size layer that slides in from the right, holds, and slides
-   out to the left on a staggered delay, rather than one shared wide track.
-   (A single 500%-wide flex "filmstrip" sliding via one transform was tried
-   first — it silently stopped painting mid-transition after the first
-   cycle, in both English and Arabic, a real Chrome compositing bug with
-   that many large images sharing one huge animated layer. Four normal,
-   viewport-sized layers avoids it entirely.) */
+   its own full-size layer, in constant continuous motion (no hold-then-
+   jump) so two adjacent slides are always exactly complementary: whatever
+   width the next slide hasn't yet covered entering from one edge is
+   exactly the width the current slide still occupies leaving from the
+   other, at every instant. That's what removes the gap a discrete
+   "hold, then quick-slide" version showed between slides. A single
+   500%-wide flex "filmstrip" sliding via one shared transform was tried
+   before this — it silently stopped painting mid-transition after the
+   first cycle, in both English and Arabic, a real Chrome compositing bug
+   with that many large images sharing one huge animated layer. Four
+   normal, viewport-sized layers avoids that entirely.
+   animation-delay is negative for the first three slides — CSS runs a
+   negative delay as if the animation already started that long ago, so
+   the first slide is already centered at page load (not sliding in from
+   off-screen over several seconds) and the second is already mid-entry;
+   only the last slide waits out a real (positive) delay before starting,
+   during which fill-mode:backwards holds it at its 0% keyframe (off-
+   screen) instead of the un-animated default (which would otherwise show
+   it fully visible, alarmingly, on top of everything else). */
 .hero-slide-track {
   position: relative;
   width: 100%;
@@ -566,32 +578,28 @@ body.lang-locked { overflow: hidden; }
   inset: 0;
   width: 100%;
   height: 100%;
-  animation: hero-slide-in-out 20s ease-in-out infinite;
+  animation: hero-slide-scroll 20s linear infinite backwards;
   will-change: transform;
 }
 .hero-slide-track.is-paused .hero-slide { animation-play-state: paused; }
-.hero-slide:nth-child(1) { animation-delay: 0s; }
-.hero-slide:nth-child(2) { animation-delay: 5s; }
-.hero-slide:nth-child(3) { animation-delay: 10s; }
-.hero-slide:nth-child(4) { animation-delay: 15s; }
+.hero-slide:nth-child(1) { animation-delay: -10s; }
+.hero-slide:nth-child(2) { animation-delay: -5s; }
+.hero-slide:nth-child(3) { animation-delay: 0s; }
+.hero-slide:nth-child(4) { animation-delay: 5s; }
 .hero-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 40%;
 }
-@keyframes hero-slide-in-out {
+@keyframes hero-slide-scroll {
   0% { transform: translateX(100%); }
-  2% { transform: translateX(0%); }
-  23% { transform: translateX(0%); }
-  25%, 100% { transform: translateX(-100%); }
+  100% { transform: translateX(-100%); }
 }
-[dir="rtl"] .hero-slide { animation-name: hero-slide-in-out-rtl; }
-@keyframes hero-slide-in-out-rtl {
+[dir="rtl"] .hero-slide { animation-name: hero-slide-scroll-rtl; }
+@keyframes hero-slide-scroll-rtl {
   0% { transform: translateX(-100%); }
-  2% { transform: translateX(0%); }
-  23% { transform: translateX(0%); }
-  25%, 100% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
 }
 
 /* Small, unobtrusive pause/play control for the hero slideshow — sits in
