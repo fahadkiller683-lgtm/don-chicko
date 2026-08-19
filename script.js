@@ -1,108 +1,94 @@
 /* ==========================================================================
    MENU DATA — Don Chicko
-   Every category, item name, and description below comes verbatim from Don
-   Chicko's own brand assets (menu-board mockups + packaging line art), not
-   invented. The ONE exception is price: no real price list exists yet in
-   the brand materials (the source menu boards use an obvious placeholder
-   pattern — 123 / 456 / 89 — repeated identically across every item), so
-   the prices here are realistic ESTIMATES for layout purposes only and
-   must be replaced with real pricing before launch.
+   Every item below is backed by an actual product photo the client provided
+   (see assets/images/menu/, sourced from the client's own menu photo set —
+   each source filename is the real Arabic item name). Nothing here is
+   invented the way an earlier pass on this file was — if there's no photo
+   evidence for a dish, it isn't listed. Two facts were confirmed directly
+   by the client rather than guessed: broasted comes in 3/5/10-piece sizes
+   (matching the "3 KENTUCKY CRISPY CHICKEN" / "5 KENTUCKY CRISPY CHICKEN"
+   packaging art), and the Rizo rice bowls are a current product.
+   Prices: no real price list exists anywhere in the provided files. Client
+   confirmed placeholder prices are fine for now — every price below is a
+   rough estimate for layout purposes only and MUST be replaced with real
+   pricing before launch.
    ========================================================================== */
 const MENU_ITEMS = [
-  // ---- Fresh Salads ----
-  { name: "Fattoush", nameAr: "فتوش", description: "Crisp mixed greens tossed with toasted bread and a bright, tangy dressing.", descAr: "خضار طازجة مقرمشة مع خبز محمّص، وصلصة حامضة تفتح النفس.", price: 5000, category: "salads", tags: [], featured: false, image: "assets/images/menu/salad-fattoush.jpg" },
-  { name: "Arugula Salad", nameAr: "سلطة جرجير", description: "Peppery arugula, kept light and fresh.", descAr: "جرجير طازج بنكهته الحادة المميزة، خفيف على المعدة ومنعش.", price: 6000, category: "salads", tags: [], featured: false, image: "assets/images/menu/salad-arugula.jpg" },
-  { name: "Caesar Salad", nameAr: "سلطة سيزر", description: "The classic — crisp romaine, parmesan, and Caesar dressing.", descAr: "طبق كلاسيكي لا يخيب: خس روماني مقرمش، رقائق بارميزان، وصلصة سيزر الأصلية.", price: 6500, category: "salads", tags: ["Popular"], featured: false },
-
-  // ---- Cold Starters ----
-  { name: "Hommos Purée", nameAr: "حمص مهروس", description: "Silky house-made hummus, served cold.", descAr: "حمص بيتي ناعم كالحرير، يُقدَّم باردًا كما يحب أهل بغداد.", price: 4000, category: "cold-starters", tags: [], featured: false, image: "assets/images/menu/hommos.jpg" },
-  { name: "Tomato Purée & Toast", nameAr: "هريس الطماطم مع التوست", description: "Fresh tomato purée served with warm toast for dipping.", descAr: "هريس طماطم طازج، يصل مع توست ساخن جاهز للتغميس.", price: 4000, category: "cold-starters", tags: [], featured: false },
-  { name: "Bread Basket", nameAr: "سلة خبز", description: "Fresh bread, straight to the table.", descAr: "سلة خبز طازج، تصل ساخنة إلى طاولتك.", price: 2000, category: "cold-starters", tags: [], featured: false },
-  { name: "Garlic Dip", nameAr: "غموس الثوم", description: "Cool, punchy, garlic-forward — built for sharing.", descAr: "غموس بارد بنكهة ثوم قوية تلفت الانتباه — صُنع ليُشارَك على الطاولة.", price: 2000, category: "cold-starters", tags: [], featured: false },
+  // ---- Cold Starters & Salads ----
+  { name: "Garden Salad", nameAr: "سلطة الكاردن", description: "A colorful mix of crisp vegetables, tossed fresh.", descAr: "خضار طازجة ملوّنة ومقرمشة، تُحضَّر فور الطلب.", price: 5000, category: "cold-starters", tags: [], featured: false, image: "assets/images/menu/salad-garden.jpg" },
+  { name: "Baba Ghanoush", nameAr: "بابا غنوج", description: "Smoky roasted eggplant dip, finished with pomegranate.", descAr: "غموس الباذنجان المشوي بنكهته المدخنة، مزيّن بحبات الرمان.", price: 4000, category: "cold-starters", tags: [], featured: false, image: "assets/images/menu/baba-ghanoush.jpg" },
+  { name: "Hommos with Tahini", nameAr: "حمص بطحينة", description: "Silky house-made hummus, served cold.", descAr: "حمص بيتي ناعم كالحرير، يُقدَّم باردًا.", price: 4000, category: "cold-starters", tags: [], featured: false, image: "assets/images/menu/hommos.jpg" },
+  { name: "Coleslaw", nameAr: "كوسلو", description: "Classic creamy coleslaw, crisp and cool.", descAr: "كوسلو كريمي كلاسيكي، طازج ومنعش.", price: 2000, category: "cold-starters", tags: [], featured: false, image: "assets/images/menu/coleslaw.jpg" },
 
   // ---- Hot Starters ----
-  { name: "Fries", nameAr: "بطاطا مقلية", description: "Classic golden fries, hot from the fryer.", descAr: "بطاطا ذهبية مقرمشة، تصلك ساخنة طازجة من المقلاة.", price: 3000, category: "hot-starters", tags: ["Popular"], featured: false, image: "assets/images/menu/fries.jpg" },
-  { name: "Wedges or Curly Fries", nameAr: "ويدجز أو بطاطا حلزونية", description: "Your call — thick-cut wedges or curly fries.", descAr: "الخيار لك — قطع بطاطا سميكة أو بطاطا حلزونية مقرمشة.", price: 3500, category: "hot-starters", tags: [], featured: false, image: "assets/images/menu/fries-wedges.jpg" },
-  { name: "Herbed Potato Wheels", nameAr: "أقراص بطاطا بالأعشاب", description: "Roasted potato wheels tossed in herbs.", descAr: "أقراص بطاطا مشوية، معطّرة بخلطة أعشاب بيتية.", price: 4000, category: "hot-starters", tags: [], featured: false, image: "assets/images/menu/potato-wheels.jpg" },
-  { name: "Breaded Onion Rings", nameAr: "حلقات بصل مقرمشة", description: "Crunchy, golden, and made for dipping.", descAr: "حلقات ذهبية مقرمشة من الخارج، طرية من الداخل — تغميسها لازم.", price: 4000, category: "hot-starters", tags: [], featured: false },
-  { name: "Breaded Mozzarella Sticks", nameAr: "أصابع موزاريلا مقرمشة", description: "Crisp shell, molten center.", descAr: "قشرة مقرمشة تُخفي بداخلها جبنة ذائبة تمتد مع كل قضمة.", price: 5000, category: "hot-starters", tags: ["Popular"], featured: false },
-  { name: "Chicken Fingers", nameAr: "أصابع دجاج", description: "Hand-breaded chicken fingers, fried to order.", descAr: "أصابع دجاج مبطّنة يدويًا، تُقلى فور الطلب لتصل مقرمشة.", price: 5500, category: "hot-starters", tags: [], featured: false, image: "assets/images/menu/chicken-fingers.jpg" },
-  { name: "Chicken Dumplings", nameAr: "دمبلنغز الدجاج", description: "Pan-fried chicken dumplings, served hot.", descAr: "دمبلنغز دجاج محمّرة على الصاج، تُقدَّم وهي ساخنة.", price: 5000, category: "hot-starters", tags: [], featured: false },
-  { name: "Chicken Chimichinga", nameAr: "تشيميتشينغا دجاج", description: "Rolled, fried, and packed with seasoned chicken.", descAr: "ملفوفة ومقلية، ومحشوّة بدجاج متبّل بسخاء.", price: 5500, category: "hot-starters", tags: ["New"], featured: false },
-  { name: "Spicy Chicken Flautas", nameAr: "فلوتاس دجاج حار", description: "Crisp rolled tortillas with spicy chicken filling.", descAr: "تورتيلا ملفوفة ومقرمشة، بحشوة دجاج حارة تشعل النفس.", price: 5500, category: "hot-starters", tags: ["New"], featured: false },
-  { name: "Chicken Arepas", nameAr: "أريباس دجاج", description: "Griddled corn cakes stuffed with seasoned chicken.", descAr: "أقراص ذرة مشوية على الصاج، محشوّة بدجاج متبّل.", price: 5000, category: "hot-starters", tags: [], featured: false },
+  { name: "Fries", nameAr: "بطاطا مقلية", description: "Classic golden fries, hot from the fryer.", descAr: "بطاطا ذهبية مقرمشة، تصلك ساخنة طازجة من المقلاة.", price: 3000, category: "hot-starters", tags: [], featured: false, image: "assets/images/menu/fries.jpg" },
+  { name: "Family Fries", nameAr: "بطاطا مقلية عائلي", description: "A big tray of fries, sized for the table.", descAr: "طبق بطاطا كبير، بحجم يكفي الطاولة كاملة.", price: 5000, category: "hot-starters", tags: [], featured: false, image: "assets/images/menu/fries-family.jpg" },
+  { name: "Potato Balls", nameAr: "كرات البطاطا", description: "Golden roasted potato bites with herbs and lemon.", descAr: "كرات بطاطا مشوية ذهبية، معطّرة بالأعشاب والليمون.", price: 4000, category: "hot-starters", tags: [], featured: false, image: "assets/images/menu/potato-balls.jpg" },
+  { name: "Chicken Strips", nameAr: "ستربس دجاج", description: "Hand-breaded chicken strips, fried to order.", descAr: "ستربس دجاج مبطّنة يدويًا، تُقلى فور الطلب لتصل مقرمشة.", price: 5500, category: "hot-starters", tags: ["Popular"], featured: false, image: "assets/images/menu/chicken-strips.jpg" },
+  { name: "Finger Fries", nameAr: "فنكر", description: "Thick-cut skin-on fries, extra crispy.", descAr: "بطاطا مقطّعة سميكة بقشرتها، مقرمشة بشكل إضافي.", price: 3500, category: "hot-starters", tags: [], featured: false, image: "assets/images/menu/finger-fries.jpg" },
+  { name: "Finger Fries with Bang Bang Sauce", nameAr: "فنكر مع صلصة بانك بانك", description: "Finger fries loaded with our Bang Bang sauce.", descAr: "فنكر مغموس بصلصة البانك بانك الخاصة بنا.", price: 4500, category: "hot-starters", tags: ["New"], featured: false, image: "assets/images/menu/finger-fries-bangbang.jpg" },
 
   // ---- Broasted Chicken (fried, signature) ----
-  { name: "Broasted — 4 Pieces", nameAr: "بروستد – 4 قطع", description: "Don Chicko's signature broasted chicken. Marinated to the center, always.", descAr: "بروستد دون تشيكو المميز، بتتبيلة تصل حتى العظم في كل مرة.", price: 9000, category: "broasted", tags: [], featured: false, image: "assets/images/menu/broasted-4pc.jpg" },
-  { name: "Broasted — 8 Pieces", nameAr: "بروستد – 8 قطع", description: "Don Chicko's signature broasted chicken, for the table.", descAr: "بروستد دون تشيكو المميز، بكمية تكفي الطاولة كاملة.", price: 16000, category: "broasted", tags: ["Popular"], featured: false, image: "assets/images/menu/broasted-8pc.jpg" },
-  { name: "Broasted — 12 Pieces", nameAr: "بروستد – 12 قطعة", description: "The full flame — Don Chicko's signature broasted chicken, family-size.", descAr: "كل النار في طبق واحد — بروستد دون تشيكو بحجم يليق بالعائلة.", price: 22000, category: "broasted", tags: [], featured: false, image: "assets/images/menu/broasted-12pc.jpg" },
-  { name: "Whole Broasted Chicken", nameAr: "دجاجة كاملة بروستد", description: "A whole chicken, broasted the Don Chicko way.", descAr: "دجاجة كاملة، بروستد على طريقة الدون من الرأس للذيل.", price: 14000, category: "broasted", tags: ["Signature"], featured: true, image: "assets/images/menu/broasted-whole.jpg" },
-  { name: "Broasted Formulas", nameAr: "عروض البروستد", description: "Ask your server about our combo formulas — chicken, sides, and a drink, bundled together.", descAr: "اسأل النادل عن عروضنا المجمّعة — دجاج، أطباق جانبية، ومشروب في طلب واحد.", price: 18000, category: "broasted", tags: [], featured: false, image: "assets/images/menu/broasted-formulas.jpg" },
+  { name: "Broasted — 3 Pieces with Fries", nameAr: "بروستد – 3 قطع مع بطاطا", description: "Don Chicko's signature broasted chicken, with fries on the side.", descAr: "بروستد دون تشيكو المميز، مع بطاطا مقلية بجانبه.", price: 6000, category: "broasted", tags: [], featured: true, image: "assets/images/menu/broasted-3pc.jpg" },
+  { name: "Broasted — 5 Pieces", nameAr: "بروستد – 5 قطع", description: "Don Chicko's signature broasted chicken, marinated to the center.", descAr: "بروستد دون تشيكو المميز، بتتبيلة تصل حتى العظم.", price: 9000, category: "broasted", tags: ["Popular"], featured: false, image: "assets/images/menu/broasted-5pc.jpg" },
+  { name: "Broasted — 10 Pieces (Family, with Rice)", nameAr: "بروستد – 10 قطع مع رز (عائلي)", description: "The full flame — broasted chicken over rice, family-size.", descAr: "كل النار في طبق واحد — بروستد على الرز، بحجم يليق بالعائلة.", price: 18000, category: "broasted", tags: ["Signature"], featured: false, image: "assets/images/menu/broasted-10pc-family.jpg" },
 
-  // ---- Roasted / Grilled Chicken ----
-  { name: "Roasted — 8 Pieces", nameAr: "مشوي – 8 قطع", description: "Grilled, not fried — always unforgettable, always cooked to the center.", descAr: "على الفحم لا في الزيت — نكهة تلازم الذاكرة، ونضج يصل حتى العظم في كل قطعة.", price: 16000, category: "roasted", tags: [], featured: false, image: "assets/images/menu/roasted-8pc.jpg" },
-  { name: "Whole Roasted Chicken", nameAr: "دجاجة كاملة مشوية", description: "A whole chicken over the flame, grilled the Don Chicko way.", descAr: "دجاجة كاملة فوق الجمر، مشوية على طريقة دون تشيكو الخاصة.", price: 14000, category: "roasted", tags: ["Signature"], featured: false, image: "assets/images/menu/roasted-whole.jpg" },
-
-  // ---- Sandwiches ----
-  { name: "Chicken Beiruti", nameAr: "دجاج بيروتي", description: "A Beiruti-style chicken sandwich, Don Chicko's way.", descAr: "سندويش دجاج على الطريقة البيروتية، بلمسة دون تشيكو الخاصة.", price: 6000, category: "sandwiches", tags: ["Popular"], featured: true, image: "assets/images/menu/sandwich-beiruti.jpg" },
-  { name: "Tawook – Spiedes", nameAr: "طاووق – أسياخ", description: "Skewered, marinated chicken tawook.", descAr: "طاووق دجاج متبّل، مشوي على السيخ حتى يصبح ذهبيًا.", price: 6500, category: "sandwiches", tags: [], featured: false, image: "assets/images/menu/tawook.jpg" },
-  { name: "Chicken Parmesan Subs", nameAr: "سندويش دجاج بارميزان", description: "Breaded chicken, melted cheese, classic sub roll.", descAr: "دجاج مقرمش وجبنة ذائبة، في خبز ساندويش كلاسيكي.", price: 7000, category: "sandwiches", tags: [], featured: false, image: "assets/images/menu/chicken-parmesan-sub.jpg" },
-  { name: "Souvlaki", nameAr: "سوفلاكي", description: "Grilled chicken souvlaki, wrapped up.", descAr: "سوفلاكي دجاج مشوي، ملفوف بإحكام بكل نكهته.", price: 6500, category: "sandwiches", tags: [], featured: false, image: "assets/images/menu/souvlaki.jpg" },
-  { name: "Chicken Burritos Mojados", nameAr: "بوريتو دجاج رطب", description: "A \"wet\" chicken burrito, sauced and loaded.", descAr: "بوريتو دجاج \"رطب\"، مغمور بالصلصة ومحمّل بالحشوة حتى آخره.", price: 7500, category: "sandwiches", tags: ["New"], featured: false, image: "assets/images/menu/burrito-mojados.jpg" },
-  { name: "Pulled Chicken BBQ", nameAr: "دجاج مسحوب بصلصة الباربكيو", description: "Slow-pulled chicken in Don Chicko's BBQ sauce.", descAr: "دجاج مطهو ببطء ومسحوب بالكامل، مغموس بصلصة الباربكيو الخاصة بالدون.", price: 7000, category: "sandwiches", tags: [], featured: false, image: "assets/images/menu/bbq.jpg" },
-  { name: "Texas-Size BBQ Chicken & Cheddar", nameAr: "باربكيو دجاج وتشيدر بحجم تكساس", description: "Big BBQ chicken sandwich, loaded with cheddar.", descAr: "سندويش باربكيو كبير الحجم، محمّل بجبنة تشيدر لا تُقاوَم.", price: 8000, category: "sandwiches", tags: ["New"], featured: false, image: "assets/images/menu/texas-bbq-cheddar.jpg" },
-  { name: "Chicken Kebabs BBQ", nameAr: "كباب دجاج بالباربكيو", description: "Chicken kebabs finished in BBQ sauce.", descAr: "كباب دجاج مشوي، منقوع بصلصة الباربكيو حتى آخر قطعة.", price: 7000, category: "sandwiches", tags: [], featured: false, image: "assets/images/menu/chicken-kebabs-bbq.jpg" },
-
-  // ---- Burgers ----
-  { name: "Chicken Fillet Burger", nameAr: "برغر فيليه دجاج", description: "Grilled chicken fillet, dressed and stacked.", descAr: "فيليه دجاج مشوي، مكدّس مع كل الإضافات المناسبة.", price: 6000, category: "burgers", tags: [], featured: false },
-  { name: "Chicken Crispy Burger", nameAr: "برغر دجاج كرسبي", description: "Crispy fried chicken, dressed and stacked.", descAr: "دجاج مقرمش من الخارج، مكدّس مع الإضافات على طريقتنا.", price: 6500, category: "burgers", tags: ["Popular"], featured: false },
-  { name: "Beef Burger", nameAr: "برغر لحم", description: "A classic Don Chicko beef burger.", descAr: "برغر لحم بقري كلاسيكي، بتوقيع دون تشيكو.", price: 7500, category: "burgers", tags: ["Chef's Pick"], featured: true, image: "assets/images/menu/beef-burger.jpg" },
-  { name: "Veggie Burger", nameAr: "برغر نباتي", description: "A plant-based patty, dressed the Don Chicko way.", descAr: "قرص نباتي بالكامل، مُجهّز بلمسة دون تشيكو المعروفة.", price: 5500, category: "burgers", tags: [], featured: false },
+  // ---- Grilled Chicken ----
+  { name: "Whole Grilled Chicken", nameAr: "دجاجة كاملة مشوية", description: "A whole chicken over the flame, grilled the Don Chicko way.", descAr: "دجاجة كاملة فوق الجمر، مشوية على طريقة دون تشيكو الخاصة.", price: 14000, category: "roasted", tags: ["Signature"], featured: false, image: "assets/images/menu/grilled-whole.jpg" },
+  { name: "Half Grilled Chicken", nameAr: "نصف دجاجة مشوية", description: "Grilled, not fried — cooked to the center every time.", descAr: "مشوي وليس مقليًا — نضج يصل حتى العظم في كل مرة.", price: 8000, category: "roasted", tags: [], featured: false, image: "assets/images/menu/grilled-half.jpg" },
+  { name: "Grilled Chicken with Rice", nameAr: "دجاجة مشوية على الرز", description: "A whole grilled chicken, served over rice.", descAr: "دجاجة كاملة مشوية، تُقدَّم فوق طبق من الرز.", price: 16000, category: "roasted", tags: [], featured: true, image: "assets/images/menu/grilled-with-rice.jpg" },
+  { name: "Half Grilled Chicken with Rice", nameAr: "نصف دجاجة مشوية على الرز", description: "Half a grilled chicken, served over rice.", descAr: "نصف دجاجة مشوية، تُقدَّم فوق طبق من الرز.", price: 10000, category: "roasted", tags: [], featured: false, image: "assets/images/menu/grilled-half-with-rice.jpg" },
 
   // ---- Rice ----
-  { name: "Smoked Rice", nameAr: "أرز مدخن", description: "Rice finished with a smoked edge.", descAr: "أرز بنكهة مدخنة تضيف عمقًا لكل لقمة.", price: 3000, category: "rice", tags: [], featured: false, image: "assets/images/menu/smoked-rice.jpg" },
-  { name: "Kabsa Rice", nameAr: "أرز كبسة", description: "Fragrant, spiced kabsa-style rice.", descAr: "أرز على طريقة الكبسة، عطري ومتبّل بخلطة بهارات غنية.", price: 3500, category: "rice", tags: ["Popular"], featured: false, image: "assets/images/menu/kabsa-rice.jpg" },
-  { name: "Herbed Rice", nameAr: "أرز بالأعشاب", description: "Rice tossed through with fresh herbs.", descAr: "أرز مطهو مع خلطة أعشاب طازجة تعطيه رائحة مميزة.", price: 3000, category: "rice", tags: [], featured: false, image: "assets/images/menu/plain-rice.jpg" },
-  { name: "Plain Rice", nameAr: "أرز أبيض", description: "Simple, fluffy steamed rice.", descAr: "أرز أبيض مطهو على البخار، طري وبسيط يناسب أي طبق.", price: 2000, category: "rice", tags: [], featured: false, image: "assets/images/menu/plain-rice.jpg" },
+  { name: "White Rice", nameAr: "رز أبيض", description: "Simple, fluffy steamed rice.", descAr: "رز أبيض مطهو على البخار، طري وبسيط.", price: 2000, category: "rice", tags: [], featured: false, image: "assets/images/menu/rice-white.jpg" },
+  { name: "Kabsa Rice", nameAr: "رز كبسة", description: "Fragrant, spiced kabsa-style rice.", descAr: "رز على طريقة الكبسة، عطري ومتبّل بخلطة بهارات غنية.", price: 3500, category: "rice", tags: ["Popular"], featured: false, image: "assets/images/menu/rice-kabsa.jpg" },
+  { name: "Smoked Rice", nameAr: "رز مدخن", description: "Rice finished with a smoked edge.", descAr: "رز بنكهة مدخنة تضيف عمقًا لكل لقمة.", price: 3000, category: "rice", tags: [], featured: false, image: "assets/images/menu/rice-smoked.jpg" },
+
+  // ---- Rizo Bowls ----
+  { name: "Rizo Classic", nameAr: "ريزو كلاسيك", description: "Rice topped with chicken and our classic sauce.", descAr: "رز مغطى بالدجاج وصلصتنا الكلاسيكية.", price: 5000, category: "rice-bowls", tags: [], featured: false, image: "assets/images/menu/rizo-classic.jpg" },
+  { name: "Rizo Bang Bang", nameAr: "ريزو بانك بانك", description: "Rice topped with chicken and our Bang Bang sauce.", descAr: "رز مغطى بالدجاج وصلصة البانك بانك.", price: 5500, category: "rice-bowls", tags: ["New"], featured: false, image: "assets/images/menu/rizo-bangbang.jpg" },
+
+  // ---- Sandwiches & Wraps ----
+  { name: "Chicken Kebab Sandwich", nameAr: "ساندويش كباب دجاج", description: "Grilled chicken kebab, wrapped up with all the fixings.", descAr: "كباب دجاج مشوي، ملفوف مع كل الإضافات.", price: 4500, category: "sandwiches", tags: ["Popular"], featured: true, image: "assets/images/menu/kebab-sandwich.jpg" },
+  { name: "Twister", nameAr: "تويستر", description: "Our signature loaded chicken wrap.", descAr: "لفافة الدجاج المميزة عندنا، محمّلة بالكامل.", price: 4000, category: "sandwiches", tags: [], featured: false, image: "assets/images/menu/twister.jpg" },
+  { name: "Twister Meal", nameAr: "وجبة تويستر", description: "The Twister wrap, with fries and a drink.", descAr: "لفافة التويستر، مع بطاطا مقلية ومشروب.", price: 6000, category: "sandwiches", tags: [], featured: false, image: "assets/images/menu/twister-meal.jpg" },
+
+  // ---- Burgers ----
+  { name: "Beef Burger", nameAr: "برغر لحم بقري", description: "A classic Don Chicko beef burger.", descAr: "برغر لحم بقري كلاسيكي، بتوقيع دون تشيكو.", price: 6000, category: "burgers", tags: ["Chef's Pick"], featured: false, image: "assets/images/menu/beef-burger.jpg" },
+  { name: "Double Beef Burger", nameAr: "دبل برغر لحم", description: "Two beef patties stacked high, with fries and a drink.", descAr: "قرصان من اللحم البقري فوق بعضهما، مع بطاطا ومشروب.", price: 8500, category: "burgers", tags: [], featured: false, image: "assets/images/menu/beef-burger-double.jpg" },
 
   // ---- Sauces & Dips ----
-  { name: "Red Dip Plain", nameAr: "صلصة حمراء عادية", description: "A simple, classic red dip.", descAr: "صلصة حمراء بسيطة على الطريقة الكلاسيكية.", price: 1000, category: "sauces", tags: [], featured: false },
-  { name: "Gravy", nameAr: "مرقة", description: "Rich, savory gravy.", descAr: "مرقة غنية بنكهتها، تضيف دسامة لأي طبق.", price: 1000, category: "sauces", tags: [], featured: false, image: "assets/images/menu/gravy.jpg" },
-  { name: "Chimichurri", nameAr: "تشيميتشوري", description: "Bright, herby, and a little sharp.", descAr: "صلصة أعشاب زاهية بحدّة خفيفة تنعش الطبق.", price: 1500, category: "sauces", tags: [], featured: false },
-  { name: "Mushroom Sauce", nameAr: "صلصة الفطر", description: "Earthy mushroom sauce.", descAr: "صلصة فطر بنكهة عميقة قريبة من الأرض.", price: 1500, category: "sauces", tags: [], featured: false },
-  { name: "Spicy Honey Dipping Sauce", nameAr: "صلصة العسل الحارة", description: "Sweet heat, built for dipping.", descAr: "حلاوة العسل تلتقي بحرارة الفلفل — صُنعت خصيصًا للتغميس.", price: 1500, category: "sauces", tags: ["Popular"], featured: false },
-  { name: "Don Chicko Sauce", nameAr: "صلصة دون تشيكو", description: "The house signature — the Don's own recipe.", descAr: "صلصة البيت المميزة، بوصفة الدون السرية التي لا تُشارَك.", price: 2000, category: "sauces", tags: ["Signature"], featured: false, image: "assets/images/menu/don-chicko-sauce.jpg" },
-  { name: "Honey Mustard", nameAr: "خردل بالعسل", description: "Sweet and sharp, classic pairing.", descAr: "مزيج كلاسيكي بين حلاوة العسل وحدّة الخردل.", price: 1500, category: "sauces", tags: [], featured: false },
-  { name: "Ranch", nameAr: "رانش", description: "Cool, creamy, classic ranch.", descAr: "صلصة رانش كريمية وباردة، على الطريقة الكلاسيكية.", price: 1500, category: "sauces", tags: [], featured: false },
-  { name: "Curry Sauce", nameAr: "صلصة الكاري", description: "Warm curry spice, smooth finish.", descAr: "توابل الكاري الدافئة، بقوام ناعم يلتف حول كل قطعة.", price: 1500, category: "sauces", tags: [], featured: false },
-  { name: "Pepper Mayo", nameAr: "مايونيز بالفلفل", description: "Creamy mayo with a peppery kick.", descAr: "مايونيز كريمي، مع لمسة فلفل تعطيه نكهة إضافية.", price: 1500, category: "sauces", tags: [], featured: false },
-  { name: "Sweet & Spicy Buffalo Sauce", nameAr: "صلصة بافلو حلوة وحارة", description: "Buffalo heat, balanced with sweetness.", descAr: "حرارة صلصة البافلو، موزونة بلمسة من الحلاوة.", price: 1500, category: "sauces", tags: ["New"], featured: false },
-  { name: "Spicy Sauce", nameAr: "صلصة حارة", description: "Straightforward heat.", descAr: "حرارة صريحة، بلا مجاملات.", price: 1000, category: "sauces", tags: [], featured: false, image: "assets/images/menu/spicy-sauce.jpg" },
-  { name: "Smokey Sauce", nameAr: "صلصة مدخنة", description: "Deep, smoky, savory.", descAr: "نكهة مدخنة عميقة، تناسب من يحب الطعم القوي.", price: 1500, category: "sauces", tags: [], featured: false },
-  { name: "BBQ Sauce", nameAr: "صلصة باربكيو", description: "Classic house BBQ.", descAr: "صلصة باربكيو البيت، على الوصفة الكلاسيكية.", price: 1500, category: "sauces", tags: [], featured: false, image: "assets/images/menu/bbq.jpg" },
-  { name: "Avocado Cream", nameAr: "كريمة الأفوكادو", description: "Cool, rich avocado cream.", descAr: "كريمة أفوكادو باردة وغنية، بقوام ناعم.", price: 2000, category: "sauces", tags: [], featured: false },
+  { name: "BBQ Sauce", nameAr: "صلصة باربكيو", description: "Classic house BBQ.", descAr: "صلصة باربكيو البيت، على الوصفة الكلاسيكية.", price: 1000, category: "sauces", tags: [], featured: false, image: "assets/images/menu/sauce-bbq.jpg" },
+  { name: "Bang Bang Sauce", nameAr: "صلصة بانك بانك", description: "Our signature Bang Bang sauce.", descAr: "صلصة البانك بانك المميزة عندنا.", price: 1000, category: "sauces", tags: ["Signature"], featured: false, image: "assets/images/menu/sauce-bangbang.jpg" },
+  { name: "Spicy Sauce", nameAr: "صلصة حارة", description: "Straightforward heat.", descAr: "حرارة صريحة، بلا مجاملات.", price: 1000, category: "sauces", tags: [], featured: false, image: "assets/images/menu/sauce-spicy.jpg" },
+  { name: "Kaib Sauce", nameAr: "صلصة كيب", description: "Don Chicko's own kaib sauce.", descAr: "صلصة الكيب الخاصة بدون تشيكو.", price: 1000, category: "sauces", tags: [], featured: false, image: "assets/images/menu/sauce-kaib.jpg" },
 
   // ---- Desserts ----
-  { name: "Cobbler Cookies", nameAr: "كوكيز كوبلر", description: "Warm, gooey cobbler-style cookies.", descAr: "كوكيز دافئة بحشوة طرية تذوب في الفم على طريقة الكوبلر.", price: 4000, category: "desserts", tags: [], featured: false, image: "assets/images/menu/cobbler-cookies.jpg" },
-  { name: "Brownies", nameAr: "براوني", description: "Rich, fudgy brownies.", descAr: "براوني غني بالشوكولاتة، طري من الداخل.", price: 4500, category: "desserts", tags: ["Popular"], featured: false },
-  { name: "Merry Cream", nameAr: "كريمة ميري", description: "A sweet, creamy Don Chicko dessert.", descAr: "حلوى كريمية حلوة، من توقيع دون تشيكو الخاص.", price: 4000, category: "desserts", tags: [], featured: false, image: "assets/images/menu/merry-cream.jpg" },
-  { name: "Banana Cake", nameAr: "كيك الموز", description: "Moist banana cake, simple and classic.", descAr: "كيك موز طري وبسيط، على الطريقة الكلاسيكية.", price: 3500, category: "desserts", tags: [], featured: false },
+  { name: "Double Chocolate Cookies", nameAr: "دبل تشوكلت كوكيز", description: "Warm, gooey double chocolate cookies.", descAr: "كوكيز بالشوكولاتة المزدوجة، دافئة وطرية من الداخل.", price: 3000, category: "desserts", tags: [], featured: false, image: "assets/images/menu/cookies-chocolate.jpg" },
+  { name: "Red Velvet Cookies", nameAr: "ريد فيلفت كوكيز", description: "Soft red velvet cookies with white chocolate.", descAr: "كوكيز الريد فيلفت الطرية، مع قطع الشوكولاتة البيضاء.", price: 3000, category: "desserts", tags: ["Popular"], featured: false, image: "assets/images/menu/cookies-red-velvet.jpg" },
+  { name: "Merry Cream", nameAr: "ميري كريم", description: "A sweet, creamy Don Chicko soft-serve dessert.", descAr: "حلوى آيسكريم كريمية حلوة، من توقيع دون تشيكو الخاص.", price: 3000, category: "desserts", tags: [], featured: false, image: "assets/images/menu/merry-cream.jpg" },
+
+  // ---- Drinks ----
+  { name: "Water", nameAr: "ماء", description: "Bottled water.", descAr: "زجاجة ماء.", price: 500, category: "drinks", tags: [], featured: false, image: "assets/images/menu/water.jpg" },
+  { name: "Soft Drink", nameAr: "مشروب غازي", description: "Your choice of soft drink.", descAr: "مشروب غازي بحسب اختيارك.", price: 1500, category: "drinks", tags: [], featured: false, image: "assets/images/menu/soft-drink.jpg" },
+  { name: "Juice", nameAr: "عصير", description: "Chilled fruit juice.", descAr: "عصير فواكه بارد.", price: 1000, category: "drinks", tags: [], featured: false, image: "assets/images/menu/juice.jpg" },
 
   // ---- Kids Meal ----
-  { name: "Kids Meal", nameAr: "وجبة الأطفال", description: "A kid-sized broasted chicken meal with fries — made by the Don, loved by all.", descAr: "وجبة بروستد بحجم يناسب الأطفال مع بطاطا مقلية — من صنع الدون، ويحبها الجميع.", price: 7000, category: "kids", tags: [], featured: false, image: "assets/images/menu/kids-meal.jpg" },
+  { name: "Kids Meal", nameAr: "وجبة الأطفال", description: "A kid-sized broasted chicken meal with fries — made by the Don, loved by all.", descAr: "وجبة بروستد بحجم يناسب الأطفال مع بطاطا مقلية — من صنع الدون، ويحبها الجميع.", price: 5000, category: "kids", tags: [], featured: false, image: "assets/images/menu/kids-meal.jpg" },
 ];
 
 const CATEGORIES = [
-  { id: "salads", label: "Fresh Salads", labelAr: "سلطات طازجة" },
-  { id: "cold-starters", label: "Cold Starters", labelAr: "مقبلات باردة" },
+  { id: "cold-starters", label: "Cold Starters & Salads", labelAr: "مقبلات باردة وسلطات" },
   { id: "hot-starters", label: "Hot Starters", labelAr: "مقبلات ساخنة" },
   { id: "broasted", label: "Broasted Chicken", labelAr: "دجاج بروستد" },
-  { id: "roasted", label: "Roasted Chicken", labelAr: "دجاج مشوي" },
-  { id: "sandwiches", label: "Sandwiches", labelAr: "سندويشات" },
-  { id: "burgers", label: "Burgers", labelAr: "برغر" },
+  { id: "roasted", label: "Grilled Chicken", labelAr: "دجاج مشوي" },
   { id: "rice", label: "Rice", labelAr: "أرز" },
+  { id: "rice-bowls", label: "Rizo Bowls", labelAr: "ريزو" },
+  { id: "sandwiches", label: "Sandwiches & Wraps", labelAr: "سندويشات ولفائف" },
+  { id: "burgers", label: "Burgers", labelAr: "برغر" },
   { id: "sauces", label: "Sauces & Dips", labelAr: "صلصات وغماسات" },
   { id: "desserts", label: "Desserts", labelAr: "حلويات" },
+  { id: "drinks", label: "Drinks", labelAr: "مشروبات" },
   { id: "kids", label: "Kids Meal", labelAr: "وجبة الأطفال" },
 ];
 
