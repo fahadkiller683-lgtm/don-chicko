@@ -223,7 +223,26 @@ const translations = {
     document.dispatchEvent(new CustomEvent("donchicko:langchange", { detail: { lang: currentLang } }));
   }
 
+  const SESSION_KEY = "donchicko_lang";
+
+  function getSessionLang() {
+    try {
+      return sessionStorage.getItem(SESSION_KEY);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function saveSessionLang(lang) {
+    try {
+      sessionStorage.setItem(SESSION_KEY, lang);
+    } catch (e) {
+      /* sessionStorage unavailable (private mode, etc) — just won't persist across pages */
+    }
+  }
+
   function setLanguage(lang) {
+    saveSessionLang(lang);
     applyLanguage(lang);
   }
 
@@ -233,8 +252,10 @@ const translations = {
     });
   }
 
-  /* The language choice is intentionally NOT remembered between visits —
-     the overlay shows on every fresh page load, every time, by design. */
+  /* The language choice is remembered for the current browsing session only
+     (sessionStorage) — clicking between pages (Home <-> Menu) keeps it, but
+     a genuinely new visit (new tab/window, or the browser fully closed and
+     reopened) asks again. Never permanently remembered across visits. */
   // aria-modal="true" on the overlay promises that content behind it is
   // unreachable — `inert` is what actually delivers that: it removes every
   // other top-level section from both the tab order and screen-reader
@@ -250,6 +271,15 @@ const translations = {
 
   function initLanguageOverlay() {
     const overlay = document.getElementById("langOverlay");
+    const sessionLang = getSessionLang();
+
+    if (sessionLang && translations[sessionLang]) {
+      applyLanguage(sessionLang);
+      if (overlay) overlay.remove();
+      wireLangSwitchButtons();
+      return;
+    }
+
     applyLanguage("en");
 
     if (overlay) {
