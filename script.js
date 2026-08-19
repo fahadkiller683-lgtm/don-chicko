@@ -123,7 +123,7 @@ function createMenuCard(item, { featured = false } = {}) {
 
   card.innerHTML = `
     <div class="card-band" aria-hidden="true"></div>
-    ${item.image ? `<div class="card-media"><img src="${item.image}" alt="" loading="lazy" width="600" height="450"></div>` : ""}
+    ${item.image ? `<div class="card-media"><picture><source srcset="${item.image.replace(/\.jpg$/, ".webp")}" type="image/webp"><img src="${item.image}" alt="" loading="lazy" width="600" height="450"></picture></div>` : ""}
     <div class="card-body">
       <div class="card-top-row">
         <h3 class="card-name"></h3>
@@ -344,6 +344,37 @@ function initCategorySpy() {
 }
 
 /* ==========================================================================
+   HERO SLIDESHOW PAUSE CONTROL
+   Auto-advancing content that runs longer than 5s needs a user-operable
+   pause control (WCAG 2.2.2) — this is that control.
+   ========================================================================== */
+function initHeroSlideToggle() {
+  const toggle = document.getElementById("heroSlideToggle");
+  const track = document.getElementById("heroSlideTrack");
+  if (!toggle || !track) return;
+
+  function t(key, fallback) {
+    return window.DonChickoI18n ? window.DonChickoI18n.t(key) : fallback;
+  }
+
+  function setPaused(paused) {
+    track.classList.toggle("is-paused", paused);
+    toggle.setAttribute("aria-pressed", String(paused));
+    toggle.setAttribute("aria-label", t(paused ? "a11y.playSlideshow" : "a11y.pauseSlideshow", paused ? "Play background slideshow" : "Pause background slideshow"));
+  }
+
+  toggle.addEventListener("click", () => {
+    setPaused(toggle.getAttribute("aria-pressed") !== "true");
+  });
+
+  if (window.DonChickoI18n) {
+    window.DonChickoI18n.onChange(() => {
+      setPaused(toggle.getAttribute("aria-pressed") === "true");
+    });
+  }
+}
+
+/* ==========================================================================
    MOBILE NAVIGATION
    ========================================================================== */
 function initMobileNav() {
@@ -425,6 +456,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCategoryJumpLinks();
   initCategorySpy();
   initMobileNav();
+  initHeroSlideToggle();
 
   // Reveal all non-menu sections marked with .reveal, plus featured cards.
   document.querySelectorAll(".featured-grid .ticket-card, .about-section, .visit-section")

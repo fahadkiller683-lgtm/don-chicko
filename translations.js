@@ -25,6 +25,8 @@ const translations = {
       primaryNav: "Primary",
       featuredItems: "Featured menu items",
       categoryJump: "Jump to a menu category",
+      pauseSlideshow: "Pause background slideshow",
+      playSlideshow: "Play background slideshow",
     },
     brand: { name: "DON CHICKO" },
     nav: { home: "Home", menu: "Menu", story: "Our Story", visit: "Visit", findUs: "Find Us" },
@@ -102,6 +104,8 @@ const translations = {
       primaryNav: "التنقل الرئيسي",
       featuredItems: "أطباق مختارة من القائمة",
       categoryJump: "الانتقال إلى قسم من قائمة الطعام",
+      pauseSlideshow: "إيقاف عرض الصور المتحرك",
+      playSlideshow: "تشغيل عرض الصور المتحرك",
     },
     brand: { name: "دون تشيكو" },
     nav: { home: "الرئيسية", menu: "قائمة الطعام", story: "قصتنا", visit: "زورونا", findUs: "موقعنا" },
@@ -168,24 +172,7 @@ const translations = {
    ENGINE
    ========================================================================== */
 (function () {
-  const STORAGE_KEY = "donchicko_lang";
   let currentLang = "en";
-
-  function getSavedLang() {
-    try {
-      return localStorage.getItem(STORAGE_KEY);
-    } catch (e) {
-      return null;
-    }
-  }
-
-  function saveLang(lang) {
-    try {
-      localStorage.setItem(STORAGE_KEY, lang);
-    } catch (e) {
-      /* localStorage unavailable (private mode, etc) — language just won't persist */
-    }
-  }
 
   function lookup(dict, path) {
     return path.split(".").reduce((o, k) => (o && o[k] !== undefined ? o[k] : undefined), dict);
@@ -237,7 +224,6 @@ const translations = {
   }
 
   function setLanguage(lang) {
-    saveLang(lang);
     applyLanguage(lang);
   }
 
@@ -247,33 +233,44 @@ const translations = {
     });
   }
 
+  /* The language choice is intentionally NOT remembered between visits —
+     the overlay shows on every fresh page load, every time, by design. */
+  // aria-modal="true" on the overlay promises that content behind it is
+  // unreachable — `inert` is what actually delivers that: it removes every
+  // other top-level section from both the tab order and screen-reader
+  // navigation while the overlay is up, without needing a manual keydown
+  // focus-trap loop.
+  function setBackgroundInert(overlay, isInert) {
+    Array.from(document.body.children).forEach((el) => {
+      if (el === overlay) return;
+      if (isInert) el.setAttribute("inert", "");
+      else el.removeAttribute("inert");
+    });
+  }
+
   function initLanguageOverlay() {
     const overlay = document.getElementById("langOverlay");
-    const saved = getSavedLang();
+    applyLanguage("en");
 
-    if (saved && translations[saved]) {
-      applyLanguage(saved);
-      if (overlay) overlay.remove();
-    } else {
-      applyLanguage("en");
-      if (overlay) {
-        document.body.classList.add("lang-locked");
-        overlay.querySelectorAll("[data-lang-choice]").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const lang = btn.getAttribute("data-lang-choice");
-            setLanguage(lang);
-            overlay.classList.add("is-hidden");
-            document.body.classList.remove("lang-locked");
-            overlay.addEventListener(
-              "transitionend",
-              () => overlay.remove(),
-              { once: true }
-            );
-            // Safety net in case transitionend doesn't fire (e.g. reduced motion).
-            setTimeout(() => overlay.remove(), 500);
-          });
+    if (overlay) {
+      document.body.classList.add("lang-locked");
+      setBackgroundInert(overlay, true);
+      overlay.querySelectorAll("[data-lang-choice]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const lang = btn.getAttribute("data-lang-choice");
+          setLanguage(lang);
+          overlay.classList.add("is-hidden");
+          document.body.classList.remove("lang-locked");
+          setBackgroundInert(overlay, false);
+          overlay.addEventListener(
+            "transitionend",
+            () => overlay.remove(),
+            { once: true }
+          );
+          // Safety net in case transitionend doesn't fire (e.g. reduced motion).
+          setTimeout(() => overlay.remove(), 500);
         });
-      }
+      });
     }
 
     wireLangSwitchButtons();

@@ -6,7 +6,7 @@
 <title data-i18n="meta.titleHome">Don Chicko — Grilled or Fried, Always Unforgettable</title>
 <meta name="description" data-i18n-attr-content="meta.descriptionHome" content="Don Chicko: Baghdad's chicken experience that stays with you. Grilled or fried, marinated to the center, built on four flames — Passion, Precision, Togetherness, Character.">
 <link rel="icon" type="image/png" href="assets/logos/flame-color.png">
-<link rel="stylesheet" href="style.css?v=10">
+<link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
 
@@ -14,9 +14,9 @@
 <a class="skip-link" href="#main-content" data-i18n="a11y.skipLink">Skip to main content</a>
 
 <!-- ============================= -->
-<!-- LANGUAGE SELECTION OVERLAY — shown once, before first visit; choice is
-     remembered in localStorage from then on. Bilingual by design, so it
-     reads correctly to a visitor before any language has been chosen. -->
+<!-- LANGUAGE SELECTION OVERLAY — shown on every page load, by design (not
+     remembered between visits). Bilingual by design, so it reads correctly
+     to a visitor before any language has been chosen. -->
 <!-- ============================= -->
 <div id="langOverlay" class="lang-overlay" role="dialog" aria-modal="true" aria-label="Choose your language / اختر لغتك">
   <div class="lang-overlay-inner">
@@ -69,11 +69,32 @@
   <!-- ============================= -->
   <section id="home" class="hero">
     <div class="hero-photo">
-      <img class="hero-slide" src="assets/images/hero-chicken-tenders.jpg" data-i18n-attr-alt="hero.photoAlt" alt="Crispy chicken tenders and fries with ketchup and mayo, on a dark scorched-orange surface">
-      <img class="hero-slide" src="assets/images/broasted-chicken-closeup.jpg" alt="" aria-hidden="true">
-      <img class="hero-slide" src="assets/images/board-chicken-fries.jpg" alt="" aria-hidden="true">
-      <img class="hero-slide" src="assets/images/grilled-chicken-skillet.jpg" alt="" aria-hidden="true">
+      <div class="hero-slide-track" id="heroSlideTrack">
+        <picture class="hero-slide">
+          <source srcset="assets/images/hero-chicken-tenders.webp" type="image/webp">
+          <img src="assets/images/hero-chicken-tenders.jpg" data-i18n-attr-alt="hero.photoAlt" alt="Crispy chicken tenders and fries with ketchup and mayo, on a dark scorched-orange surface">
+        </picture>
+        <picture class="hero-slide">
+          <source srcset="assets/images/broasted-chicken-closeup.webp" type="image/webp">
+          <img src="assets/images/broasted-chicken-closeup.jpg" alt="" aria-hidden="true">
+        </picture>
+        <picture class="hero-slide">
+          <source srcset="assets/images/board-chicken-fries.webp" type="image/webp">
+          <img src="assets/images/board-chicken-fries.jpg" alt="" aria-hidden="true">
+        </picture>
+        <picture class="hero-slide">
+          <source srcset="assets/images/grilled-chicken-skillet.webp" type="image/webp">
+          <img src="assets/images/grilled-chicken-skillet.jpg" alt="" aria-hidden="true">
+        </picture>
+        <picture class="hero-slide">
+          <source srcset="assets/images/hero-chicken-tenders.webp" type="image/webp">
+          <img src="assets/images/hero-chicken-tenders.jpg" alt="" aria-hidden="true">
+        </picture>
+      </div>
     </div>
+    <button type="button" class="hero-slide-toggle" id="heroSlideToggle" data-i18n-attr-aria-label="a11y.pauseSlideshow" aria-label="Pause background slideshow" aria-pressed="false">
+      <span class="hero-slide-toggle-icon" aria-hidden="true"></span>
+    </button>
     <div class="hero-decor" aria-hidden="true">
       <span class="hero-flame hero-flame-1 flame-shape"></span>
       <span class="hero-flame hero-flame-2 flame-shape"></span>
@@ -124,7 +145,10 @@
   <section id="about" class="about-section">
     <div class="about-top">
       <div class="about-visual">
-        <img src="assets/images/grilled-chicken-skillet.jpg" data-i18n-attr-alt="about.visualAlt" alt="Grilled Don Chicko chicken with herbs, tomatoes and fresh bread, plated on a sizzling skillet">
+        <picture>
+          <source srcset="assets/images/grilled-chicken-skillet.webp" type="image/webp">
+          <img src="assets/images/grilled-chicken-skillet.jpg" data-i18n-attr-alt="about.visualAlt" alt="Grilled Don Chicko chicken with herbs, tomatoes and fresh bread, plated on a sizzling skillet" loading="lazy">
+        </picture>
         <div class="about-visual-badge">
           <span class="flame-shape" aria-hidden="true"></span>
           <span data-i18n="about.visualBadge">Made by the Don</span>
@@ -243,7 +267,7 @@
   </div>
 </footer>
 
-<script src="translations.js?v=3"></script>
-<script src="script.js?v=7"></script>
+<script src="translations.js?v=5"></script>
+<script src="script.js?v=8"></script>
 </body>
 </html>
