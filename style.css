@@ -311,9 +311,7 @@ body.lang-locked { overflow: hidden; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background:
-    radial-gradient(ellipse at 50% 30%, rgba(255, 144, 38, 0.35) 0%, rgba(255, 144, 38, 0) 60%),
-    var(--brand-maroon);
+  background: linear-gradient(165deg, var(--brand-orange) 0%, var(--brand-red) 40%, var(--brand-maroon) 100%);
   padding: var(--space-md);
   opacity: 1;
   transition: opacity var(--duration-med) var(--ease-standard);
@@ -330,7 +328,7 @@ body.lang-locked { overflow: hidden; }
   width: 60px;
   height: 74px;
   margin: 0 auto var(--space-md);
-  color: var(--brand-amber);
+  color: var(--brand-cream);
   filter: drop-shadow(0 6px 0 rgba(42, 44, 43, 0.25));
 }
 .lang-overlay-title {
@@ -553,6 +551,25 @@ body.lang-locked { overflow: hidden; }
   height: 100%;
   object-fit: cover;
   object-position: 75% 45%;
+}
+/* Auto-sliding hero background — four photos crossfade in sequence, one
+   after another, looping. Each slide gets an equal share of the cycle via
+   its animation-delay; the shared keyframes fade it in, hold, fade out. */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: hero-slide-cycle 20s infinite;
+}
+.hero-slide:nth-child(1) { animation-delay: 0s; }
+.hero-slide:nth-child(2) { animation-delay: 5s; }
+.hero-slide:nth-child(3) { animation-delay: 10s; }
+.hero-slide:nth-child(4) { animation-delay: 15s; }
+@keyframes hero-slide-cycle {
+  0%, 100% { opacity: 0; }
+  2% { opacity: 1; }
+  23% { opacity: 1; }
+  25% { opacity: 0; }
 }
 .hero-photo::after {
   content: "";
