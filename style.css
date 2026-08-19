@@ -548,36 +548,50 @@ body.lang-locked { overflow: hidden; }
   z-index: -2;
   overflow: hidden;
 }
-/* Auto-sliding hero background — a filmstrip of five frames (four real
-   photos plus a repeat of the first, for a seamless loop seam) that slides
-   left one frame at a time, rather than crossfading. */
+/* Auto-sliding hero background — four independently-animated slides, each
+   its own full-size layer that slides in from the right, holds, and slides
+   out to the left on a staggered delay, rather than one shared wide track.
+   (A single 500%-wide flex "filmstrip" sliding via one transform was tried
+   first — it silently stopped painting mid-transition after the first
+   cycle, in both English and Arabic, a real Chrome compositing bug with
+   that many large images sharing one huge animated layer. Four normal,
+   viewport-sized layers avoids it entirely.) */
 .hero-slide-track {
-  display: flex;
-  width: 500%;
+  position: relative;
+  width: 100%;
   height: 100%;
-  animation: hero-track-scroll 20s ease-in-out infinite;
 }
-/* Paused via the visible toggle button (WCAG 2.2.2 — auto-moving content
-   running longer than 5s needs a user-operable pause control). */
-.hero-slide-track.is-paused { animation-play-state: paused; }
 .hero-slide {
-  display: block;
-  flex: 0 0 20%;
-  width: 20%;
+  position: absolute;
+  inset: 0;
+  width: 100%;
   height: 100%;
+  animation: hero-slide-in-out 20s ease-in-out infinite;
+  will-change: transform;
 }
+.hero-slide-track.is-paused .hero-slide { animation-play-state: paused; }
+.hero-slide:nth-child(1) { animation-delay: 0s; }
+.hero-slide:nth-child(2) { animation-delay: 5s; }
+.hero-slide:nth-child(3) { animation-delay: 10s; }
+.hero-slide:nth-child(4) { animation-delay: 15s; }
 .hero-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 40%;
 }
-@keyframes hero-track-scroll {
-  0%, 18% { transform: translateX(0%); }
-  20%, 38% { transform: translateX(-20%); }
-  40%, 58% { transform: translateX(-40%); }
-  60%, 78% { transform: translateX(-60%); }
-  80%, 100% { transform: translateX(-80%); }
+@keyframes hero-slide-in-out {
+  0% { transform: translateX(100%); }
+  2% { transform: translateX(0%); }
+  23% { transform: translateX(0%); }
+  25%, 100% { transform: translateX(-100%); }
+}
+[dir="rtl"] .hero-slide { animation-name: hero-slide-in-out-rtl; }
+@keyframes hero-slide-in-out-rtl {
+  0% { transform: translateX(-100%); }
+  2% { transform: translateX(0%); }
+  23% { transform: translateX(0%); }
+  25%, 100% { transform: translateX(100%); }
 }
 
 /* Small, unobtrusive pause/play control for the hero slideshow — sits in
@@ -1475,10 +1489,16 @@ body.lang-locked { overflow: hidden; }
   margin-right: auto;
 }
 
-/* Hero photo, its dark-to-transparent gradient, and the decorative flames
-   mirror together so the legible dark side still sits behind the copy,
-   which itself moves to the right automatically in RTL. */
-[dir="rtl"] .hero-photo,
+/* The dark-to-transparent gradient overlay and decorative flames mirror so
+   the legible dark side still sits behind the copy, which itself moves to
+   the right automatically in RTL. Only the gradient (a pseudo-element) is
+   mirrored here, deliberately NOT .hero-photo itself — that element now
+   contains the animated sliding photo track (see .hero-slide-track), and
+   stacking a static scaleX(-1) on top of an already-animated transform
+   caused the carousel to render blank/black in RTL on some browsers. The
+   photos read fine unmirrored since they're just rotating background
+   scenery, not a single directional composition anymore. */
+[dir="rtl"] .hero-photo::after,
 [dir="rtl"] .hero-decor,
 [dir="rtl"] .menu-hero-decor {
   transform: scaleX(-1);
