@@ -864,11 +864,13 @@ body.lang-locked { overflow: hidden; }
    overrides its text color to dark ink on the two light backgrounds (orange,
    amber) where cream text wouldn't meet contrast. */
 .ticket-card[data-category="cold-starters"],
+.ticket-card[data-category="salads"],
 .ticket-card[data-category="drinks"],
 .ticket-card[data-category="kids"] { --cat-color: var(--cat-cold); }
 .ticket-card[data-category="hot-starters"],
 .ticket-card[data-category="burgers"] { --cat-color: var(--cat-hot); --cat-text: var(--cat-hot-text); --cat-badge-text: var(--color-ink); }
-.ticket-card[data-category="broasted"] { --cat-color: var(--cat-broasted); }
+.ticket-card[data-category="broasted"],
+.ticket-card[data-category="chicken-strips"] { --cat-color: var(--cat-broasted); }
 .ticket-card[data-category="roasted"],
 .ticket-card[data-category="sandwiches"] { --cat-color: var(--cat-roasted); }
 .ticket-card[data-category="rice"],

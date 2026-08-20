@@ -1,95 +1,110 @@
 /* ==========================================================================
    MENU DATA — Don Chicko
-   Every item below is backed by an actual product photo the client provided
-   (see assets/images/menu/, sourced from the client's own menu photo set —
-   each source filename is the real Arabic item name). Nothing here is
-   invented the way an earlier pass on this file was — if there's no photo
-   evidence for a dish, it isn't listed. Two facts were confirmed directly
-   by the client rather than guessed: broasted comes in 3/5/10-piece sizes
-   (matching the "3 KENTUCKY CRISPY CHICKEN" / "5 KENTUCKY CRISPY CHICKEN"
-   packaging art), and the Rizo rice bowls are a current product.
-   Prices: no real price list exists anywhere in the provided files. Client
-   confirmed placeholder prices are fine for now — every price below is a
-   rough estimate for layout purposes only and MUST be replaced with real
-   pricing before launch.
+   Source of truth is the client's real printed menu flyer (menu/Menu Flyer.pdf).
+   Every item, price, and combo inclusion below is transcribed directly from
+   that flyer — nothing here is invented or estimated. Photos come from the
+   client's own dish photo set (assets/images/menu/) where a matching shot
+   exists; a handful of flyer items have no client photo yet (sauces like
+   Honey Mustard/Crevy/Garlic, Donz sandwich, Caesar Salad, Peanut Butter
+   Cookies, Laban Ghazi) and are listed without an image rather than guessed.
+   Small per-piece/add-on upcharges printed on the flyer (extra broasted
+   piece +3,000, extra strip +2,500, sandwich-to-meal upgrade +2,500, add
+   grilled chicken to a salad +3,000) aren't standalone dishes, so they're
+   not shown as their own cards.
+   Prices are in Iraqi Dinar (IQD / د.ع), exactly as printed on the flyer.
    ========================================================================== */
 const MENU_ITEMS = [
-  // ---- Cold Starters & Salads ----
-  { name: "Garden Salad", nameAr: "سلطة الكاردن", description: "A colorful mix of crisp vegetables, tossed fresh.", descAr: "خضار طازجة ملوّنة ومقرمشة، تُحضَّر فور الطلب.", price: 5000, category: "cold-starters", tags: [], featured: false, image: "assets/images/menu/salad-garden.jpg" },
-  { name: "Baba Ghanoush", nameAr: "بابا غنوج", description: "Smoky roasted eggplant dip, finished with pomegranate.", descAr: "غموس الباذنجان المشوي بنكهته المدخنة، مزيّن بحبات الرمان.", price: 4000, category: "cold-starters", tags: [], featured: false, image: "assets/images/menu/baba-ghanoush.jpg" },
-  { name: "Hommos with Tahini", nameAr: "حمص بطحينة", description: "Silky house-made hummus, served cold.", descAr: "حمص بيتي ناعم كالحرير، يُقدَّم باردًا.", price: 4000, category: "cold-starters", tags: [], featured: false, image: "assets/images/menu/hommos.jpg" },
-  { name: "Coleslaw", nameAr: "كوسلو", description: "Classic creamy coleslaw, crisp and cool.", descAr: "كوسلو كريمي كلاسيكي، طازج ومنعش.", price: 2000, category: "cold-starters", tags: [], featured: false, image: "assets/images/menu/coleslaw.jpg" },
-
-  // ---- Hot Starters ----
-  { name: "Fries", nameAr: "بطاطا مقلية", description: "Classic golden fries, hot from the fryer.", descAr: "بطاطا ذهبية مقرمشة، تصلك ساخنة طازجة من المقلاة.", price: 3000, category: "hot-starters", tags: [], featured: false, image: "assets/images/menu/fries.jpg" },
-  { name: "Family Fries", nameAr: "بطاطا مقلية عائلي", description: "A big tray of fries, sized for the table.", descAr: "طبق بطاطا كبير، بحجم يكفي الطاولة كاملة.", price: 5000, category: "hot-starters", tags: [], featured: false, image: "assets/images/menu/fries-family.jpg" },
-  { name: "Potato Balls", nameAr: "كرات البطاطا", description: "Golden roasted potato bites with herbs and lemon.", descAr: "كرات بطاطا مشوية ذهبية، معطّرة بالأعشاب والليمون.", price: 4000, category: "hot-starters", tags: [], featured: false, image: "assets/images/menu/potato-balls.jpg" },
-  { name: "Chicken Strips", nameAr: "ستربس دجاج", description: "Hand-breaded chicken strips, fried to order.", descAr: "ستربس دجاج مبطّنة يدويًا، تُقلى فور الطلب لتصل مقرمشة.", price: 5500, category: "hot-starters", tags: ["Popular"], featured: false, image: "assets/images/menu/chicken-strips.jpg" },
-  { name: "Finger Fries", nameAr: "فنكر", description: "Thick-cut skin-on fries, extra crispy.", descAr: "بطاطا مقطّعة سميكة بقشرتها، مقرمشة بشكل إضافي.", price: 3500, category: "hot-starters", tags: [], featured: false, image: "assets/images/menu/finger-fries.jpg" },
-  { name: "Finger Fries with Bang Bang Sauce", nameAr: "فنكر مع صلصة بانك بانك", description: "Finger fries loaded with our Bang Bang sauce.", descAr: "فنكر مغموس بصلصة البانك بانك الخاصة بنا.", price: 4500, category: "hot-starters", tags: ["New"], featured: false, image: "assets/images/menu/finger-fries-bangbang.jpg" },
-
-  // ---- Broasted Chicken (fried, signature) ----
-  { name: "Broasted — 3 Pieces with Fries", nameAr: "بروستد – 3 قطع مع بطاطا", description: "Don Chicko's signature broasted chicken, with fries on the side.", descAr: "بروستد دون تشيكو المميز، مع بطاطا مقلية بجانبه.", price: 6000, category: "broasted", tags: [], featured: true, image: "assets/images/menu/broasted-3pc.jpg" },
-  { name: "Broasted — 5 Pieces", nameAr: "بروستد – 5 قطع", description: "Don Chicko's signature broasted chicken, marinated to the center.", descAr: "بروستد دون تشيكو المميز، بتتبيلة تصل حتى العظم.", price: 9000, category: "broasted", tags: ["Popular"], featured: false, image: "assets/images/menu/broasted-5pc.jpg" },
-  { name: "Broasted — 10 Pieces (Family, with Rice)", nameAr: "بروستد – 10 قطع مع رز (عائلي)", description: "The full flame — broasted chicken over rice, family-size.", descAr: "كل النار في طبق واحد — بروستد على الرز، بحجم يليق بالعائلة.", price: 18000, category: "broasted", tags: ["Signature"], featured: false, image: "assets/images/menu/broasted-10pc-family.jpg" },
+  // ---- Broasted Chicken ----
+  { name: "Broasted — 2 Pieces with Rice", nameAr: "بروستد – وجبة 2 قطع مع رز", description: "Served with white rice and house BBQ or Kaib sauce, plus a 330ml soft drink.", descAr: "يُقدَّم مع الرز الأبيض وصلصة الباربكيو المحلي أو صلصة الكيب، مع مشروب غازي 330 مل.", price: 8500, category: "broasted", tags: [], featured: false, image: "assets/images/menu/broasted-2pc-rice.jpg" },
+  { name: "Broasted — 10 Pieces with Rice (Family)", nameAr: "بروستد – وجبة 10 قطع مع رز (عائلي)", description: "Family-size broasted over white rice with house BBQ or Kaib sauce, plus a 1.75L soft drink.", descAr: "بروستد عائلي فوق الرز الأبيض مع صلصة الباربكيو المحلي أو صلصة الكيب، ومشروب غازي 1.75 لتر.", price: 28500, category: "broasted", tags: ["Signature"], featured: false, image: "assets/images/menu/broasted-10pc-family.jpg" },
+  { name: "Broasted — 2 Pieces with Fries", nameAr: "بروستد – وجبة 2 قطع مع بطاطا", description: "Served with fries, coleslaw, lemon, bread, and a 330ml soft drink.", descAr: "يُقدَّم مع البطاطا المقلية والكولسلو والليمون والصمون، مع مشروب غازي 330 مل.", price: 7500, category: "broasted", tags: [], featured: false, image: "assets/images/menu/broasted-3pc.jpg" },
+  { name: "Broasted — 3 Pieces with Fries", nameAr: "بروستد – وجبة 3 قطع مع بطاطا", description: "Don Chicko's signature broasted chicken, with fries, lemon, bread, and a 330ml soft drink.", descAr: "بروستد دون تشيكو المميز، مع البطاطا المقلية والليمون والصمون، ومشروب غازي 330 مل.", price: 9500, category: "broasted", tags: ["Popular"], featured: true, image: "assets/images/menu/broasted-3pc.jpg" },
+  { name: "Broasted — 10 Pieces with Fries", nameAr: "بروستد – وجبة 10 قطع مع بطاطا", description: "Family-size fries, large coleslaw, 3 lemon wedges, 7 pieces of bread, and a 1.75L soft drink.", descAr: "بطاطا مقلية عائلية وكولسلو كبير و3 قطع ليمون و7 أرغفة صمون، مع مشروب غازي 1.75 لتر.", price: 26500, category: "broasted", tags: [], featured: false, image: "assets/images/menu/broasted-3pc.jpg" },
+  { name: "Don Chicko Family Combo", nameAr: "وجبة تشيكو عائلية", description: "4 broasted pieces + 5 chicken strips, with family fries, large coleslaw, lemon, bread, and a 1.75L soft drink.", descAr: "4 قطع بروستد + 5 قطع ستربس دجاج، مع بطاطا مقلية عائلية وكولسلو كبير وليمون وصمون، ومشروب غازي 1.75 لتر.", price: 33000, category: "broasted", tags: ["Signature"], featured: false, image: "assets/images/menu/broasted-bucket.jpg" },
 
   // ---- Grilled Chicken ----
-  { name: "Whole Grilled Chicken", nameAr: "دجاجة كاملة مشوية", description: "A whole chicken over the flame, grilled the Don Chicko way.", descAr: "دجاجة كاملة فوق الجمر، مشوية على طريقة دون تشيكو الخاصة.", price: 14000, category: "roasted", tags: ["Signature"], featured: false, image: "assets/images/menu/grilled-whole.jpg" },
-  { name: "Half Grilled Chicken", nameAr: "نصف دجاجة مشوية", description: "Grilled, not fried — cooked to the center every time.", descAr: "مشوي وليس مقليًا — نضج يصل حتى العظم في كل مرة.", price: 8000, category: "roasted", tags: [], featured: false, image: "assets/images/menu/grilled-half.jpg" },
-  { name: "Grilled Chicken with Rice", nameAr: "دجاجة مشوية على الرز", description: "A whole grilled chicken, served over rice.", descAr: "دجاجة كاملة مشوية، تُقدَّم فوق طبق من الرز.", price: 16000, category: "roasted", tags: [], featured: true, image: "assets/images/menu/grilled-with-rice.jpg" },
-  { name: "Half Grilled Chicken with Rice", nameAr: "نصف دجاجة مشوية على الرز", description: "Half a grilled chicken, served over rice.", descAr: "نصف دجاجة مشوية، تُقدَّم فوق طبق من الرز.", price: 10000, category: "roasted", tags: [], featured: false, image: "assets/images/menu/grilled-half-with-rice.jpg" },
+  { name: "Whole Grilled Chicken with Rice", nameAr: "دجاجة كاملة مشوية مع رز", description: "A whole chicken over the flame, served over your choice of rice with grilled potato balls, creamy sauce, and pickles.", descAr: "دجاجة كاملة مشوية فوق الجمر، تُقدَّم مع اختيارك من الرز وكرات البطاطا المشوية وصلصة كريمية ومخلل.", price: 26000, category: "roasted", tags: ["Signature"], featured: true, image: "assets/images/menu/grilled-with-rice.jpg" },
+  { name: "Half Grilled Chicken with Rice", nameAr: "نصف دجاجة مشوية مع رز", description: "Grilled, not fried — served over your choice of rice with grilled potato balls, creamy sauce, and pickles.", descAr: "مشوية وليست مقلية — تُقدَّم مع اختيارك من الرز وكرات البطاطا المشوية وصلصة كريمية ومخلل.", price: 15000, category: "roasted", tags: [], featured: false, image: "assets/images/menu/grilled-half-with-rice.jpg" },
+  { name: "Whole Grilled Chicken with Fries", nameAr: "دجاجة كاملة مشوية مع بطاطا", description: "A whole chicken over the flame, served with fries, lemon, grilled potato balls, creamy sauce, and pickles.", descAr: "دجاجة كاملة مشوية فوق الجمر، تُقدَّم مع البطاطا المقلية والليمون وكرات البطاطا المشوية وصلصة كريمية ومخلل.", price: 24000, category: "roasted", tags: [], featured: false, image: "assets/images/menu/grilled-whole.jpg" },
+  { name: "Half Grilled Chicken with Fries", nameAr: "نصف دجاجة مشوية مع بطاطا", description: "Grilled, not fried — served with fries, lemon, grilled potato balls, creamy sauce, and pickles.", descAr: "مشوية وليست مقلية — تُقدَّم مع البطاطا المقلية والليمون وكرات البطاطا المشوية وصلصة كريمية ومخلل.", price: 14000, category: "roasted", tags: [], featured: false, image: "assets/images/menu/grilled-half.jpg" },
 
-  // ---- Rice ----
-  { name: "White Rice", nameAr: "رز أبيض", description: "Simple, fluffy steamed rice.", descAr: "رز أبيض مطهو على البخار، طري وبسيط.", price: 2000, category: "rice", tags: [], featured: false, image: "assets/images/menu/rice-white.jpg" },
-  { name: "Kabsa Rice", nameAr: "رز كبسة", description: "Fragrant, spiced kabsa-style rice.", descAr: "رز على طريقة الكبسة، عطري ومتبّل بخلطة بهارات غنية.", price: 3500, category: "rice", tags: ["Popular"], featured: false, image: "assets/images/menu/rice-kabsa.jpg" },
-  { name: "Smoked Rice", nameAr: "رز مدخن", description: "Rice finished with a smoked edge.", descAr: "رز بنكهة مدخنة تضيف عمقًا لكل لقمة.", price: 3000, category: "rice", tags: [], featured: false, image: "assets/images/menu/rice-smoked.jpg" },
+  // ---- Chicken Strips ----
+  { name: "Chicken Strips Meal — 5 Pieces", nameAr: "ستربس الدجاج – وجبة 5 قطع", description: "5 hand-breaded chicken strips with fries, coleslaw, lemon, 3 pieces of bread, and a 330ml soft drink.", descAr: "5 قطع ستربس دجاج مقرمشة مع البطاطا المقلية والكولسلو والليمون و3 أرغفة صمون، ومشروب غازي 330 مل.", price: 10000, category: "chicken-strips", tags: ["Popular"], featured: false, image: "assets/images/menu/chicken-strips.jpg" },
+  { name: "Chicken Strips Meal — 15 Pieces", nameAr: "ستربس الدجاج – وجبة 15 قطعة", description: "15 hand-breaded chicken strips with large fries, large coleslaw, 3 lemon wedges, 7 pieces of bread, and a 1.75L soft drink.", descAr: "15 قطعة ستربس دجاج مقرمشة مع بطاطا مقلية كبيرة وكولسلو كبير و3 قطع ليمون و7 أرغفة صمون، ومشروب غازي 1.75 لتر.", price: 26000, category: "chicken-strips", tags: [], featured: false, image: "assets/images/menu/chicken-strips.jpg" },
 
   // ---- Rizo Bowls ----
-  { name: "Rizo Classic", nameAr: "ريزو كلاسيك", description: "Rice topped with chicken and our classic sauce.", descAr: "رز مغطى بالدجاج وصلصتنا الكلاسيكية.", price: 5000, category: "rice-bowls", tags: [], featured: false, image: "assets/images/menu/rizo-classic.jpg" },
-  { name: "Rizo Bang Bang", nameAr: "ريزو بانك بانك", description: "Rice topped with chicken and our Bang Bang sauce.", descAr: "رز مغطى بالدجاج وصلصة البانك بانك.", price: 5500, category: "rice-bowls", tags: ["New"], featured: false, image: "assets/images/menu/rizo-bangbang.jpg" },
+  { name: "Rizo Classic", nameAr: "ريزو كلاسيك", description: "White rice topped with chopped crispy chicken strips and our classic house sauce.", descAr: "رز أبيض مع قطع ستربس الدجاج المقرمشة وصلصتنا الكلاسيكية.", price: 6500, category: "rice-bowls", tags: [], featured: false, image: "assets/images/menu/rizo-classic.jpg" },
+  { name: "Rizo Kaib", nameAr: "ريزو كيب", description: "White rice topped with chopped crispy chicken strips and Kaib sauce.", descAr: "رز أبيض مع قطع ستربس الدجاج المقرمشة وصلصة الكيب.", price: 6500, category: "rice-bowls", tags: [], featured: false, image: null },
+  { name: "Rizo Bang Bang", nameAr: "ريزو بانك بانك", description: "White rice topped with chopped crispy chicken strips and our Bang Bang sauce.", descAr: "رز أبيض مع قطع ستربس الدجاج المقرمشة وصلصة البانك بانك.", price: 7000, category: "rice-bowls", tags: ["New"], featured: false, image: "assets/images/menu/rizo-bangbang.jpg" },
+  { name: "Rizo Smoky", nameAr: "ريزو سموكي", description: "Smoked rice topped with chopped crispy chicken strips and smoky sauce.", descAr: "رز مدخن مع قطع ستربس الدجاج المقرمشة وصلصة سموكي.", price: 7000, category: "rice-bowls", tags: [], featured: false, image: null },
 
   // ---- Sandwiches & Wraps ----
-  { name: "Chicken Kebab Sandwich", nameAr: "ساندويش كباب دجاج", description: "Grilled chicken kebab, wrapped up with all the fixings.", descAr: "كباب دجاج مشوي، ملفوف مع كل الإضافات.", price: 4500, category: "sandwiches", tags: ["Popular"], featured: true, image: "assets/images/menu/kebab-sandwich.jpg" },
-  { name: "Twister", nameAr: "تويستر", description: "Our signature loaded chicken wrap.", descAr: "لفافة الدجاج المميزة عندنا، محمّلة بالكامل.", price: 4000, category: "sandwiches", tags: [], featured: false, image: "assets/images/menu/twister.jpg" },
-  { name: "Twister Meal", nameAr: "وجبة تويستر", description: "The Twister wrap, with fries and a drink.", descAr: "لفافة التويستر، مع بطاطا مقلية ومشروب.", price: 6000, category: "sandwiches", tags: [], featured: false, image: "assets/images/menu/twister-meal.jpg" },
+  { name: "Twister", nameAr: "تويستر", description: "Crispy chicken strips with lettuce, tomato, and cheddar, wrapped in toasted tortilla bread.", descAr: "سترسبس دجاج مقرمشة مع الخس والطماطم وجبنة التشيدر، ملفوفة في خبز التورتيلا المحمّص.", price: 6500, category: "sandwiches", tags: [], featured: false, image: "assets/images/menu/twister.jpg" },
+  { name: "Donz", nameAr: "دونز", description: "Chopped broasted chicken with lemon, coleslaw, and fries, wrapped in pita bread.", descAr: "بروستد مقطّع مع الليمون والكولسلو والبطاطا المقلية، ملفوف في خبز البيتا.", price: 6500, category: "sandwiches", tags: ["New"], featured: false, image: null },
+  { name: "Chicken Kebab Sandwich", nameAr: "ساندويش كباب دجاج", description: "Grilled chicken kebab with herb-roasted peppers, baba ghanoush, and red pepper sauce.", descAr: "كباب دجاج مشوي مع الفلفل المشوي بالأعشاب وبابا غنوج وصلصة الفلفل الأحمر.", price: 6500, category: "sandwiches", tags: ["Popular"], featured: true, image: "assets/images/menu/kebab-sandwich.jpg" },
 
   // ---- Burgers ----
-  { name: "Beef Burger", nameAr: "برغر لحم بقري", description: "A classic Don Chicko beef burger.", descAr: "برغر لحم بقري كلاسيكي، بتوقيع دون تشيكو.", price: 6000, category: "burgers", tags: ["Chef's Pick"], featured: false, image: "assets/images/menu/beef-burger.jpg" },
-  { name: "Double Beef Burger", nameAr: "دبل برغر لحم", description: "Two beef patties stacked high, with fries and a drink.", descAr: "قرصان من اللحم البقري فوق بعضهما، مع بطاطا ومشروب.", price: 8500, category: "burgers", tags: [], featured: false, image: "assets/images/menu/beef-burger-double.jpg" },
+  { name: "Beef Burger", nameAr: "برغر لحم بقري", description: "A beef patty with Thousand Island sauce, cheddar cheese, caramelized onion, lettuce, and tomato.", descAr: "برغر لحم بقري مع صلصة ثاوزند آيلاند وجبنة تشيدر وبصل مكرمّل مع خس وطماطم.", price: 8500, category: "burgers", tags: ["Chef's Pick"], featured: false, image: "assets/images/menu/beef-burger.jpg" },
+
+  // ---- Kids Meal ----
+  { name: "Kids Meal", nameAr: "وجبة الكتاكيت", description: "3 pieces of crispy chicken strips, with fries and a juice.", descAr: "3 قطع من شرائح الدجاج المقرمشة، مع بطاطا مقلية وعصير.", price: 6000, category: "kids", tags: [], featured: false, image: "assets/images/menu/kids-meal.jpg" },
+
+  // ---- Hot Starters ----
+  { name: "Fries", nameAr: "بطاطا مقلية", description: "Golden fries, hot from the fryer.", descAr: "بطاطا ذهبية مقرمشة، ساخنة من المقلاة.", price: 2500, category: "hot-starters", tags: [], featured: false, image: "assets/images/menu/fries.jpg" },
+  { name: "Family Fries", nameAr: "بطاطا مقلية عائلي", description: "A family-size tray of golden fries.", descAr: "طبق بطاطا مقلية بحجم عائلي.", price: 4000, category: "hot-starters", tags: [], featured: false, image: "assets/images/menu/fries-family.jpg" },
+  { name: "Potato Balls", nameAr: "كرات البطاطا", description: "Roasted potato balls, seasoned with chicken broth and herbs.", descAr: "كرات بطاطا مشوية، متبّلة بمرقة الدجاج والأعشاب.", price: 3500, category: "hot-starters", tags: [], featured: false, image: "assets/images/menu/potato-balls.jpg" },
+
+  // ---- Cold Starters ----
+  { name: "Baba Ghanoush", nameAr: "بابا غنوج", description: "Smoky roasted eggplant with fresh chopped vegetables.", descAr: "باذنجان مشوي بنكهته المدخنة مع الخضار الطازجة المقطّعة.", price: 3000, category: "cold-starters", tags: [], featured: false, image: "assets/images/menu/baba-ghanoush.jpg" },
+  { name: "Hommos with Tahini", nameAr: "حمص بطحينة", description: "Silky house-made hummus with tahini.", descAr: "حمص بيتي ناعم بالطحينة.", price: 3000, category: "cold-starters", tags: [], featured: false, image: "assets/images/menu/hommos.jpg" },
+
+  // ---- Salads ----
+  { name: "Garden Salad", nameAr: "سلطة الكاردن", description: "Fresh mixed vegetables, served with lemon-mustard or balsamic vinaigrette.", descAr: "سلطة من الخضار الطازجة، تُقدَّم مع صوص الليمون والخردل أو خل البلسميك.", price: 4500, category: "salads", tags: [], featured: false, image: "assets/images/menu/salad-garden.jpg" },
+  { name: "Caesar Salad", nameAr: "سلطة سيزر", description: "Crisp romaine lettuce with Caesar dressing, toasted croutons, and parmesan.", descAr: "خس روماني طازج مع صلصة السيزر والتوست المحمّص وجبنة البارميزان.", price: 4500, category: "salads", tags: ["New"], featured: false, image: null },
+  { name: "Coleslaw", nameAr: "كولسلو", description: "Classic creamy coleslaw.", descAr: "كولسلو كريمي كلاسيكي.", price: 500, category: "salads", tags: [], featured: false, image: "assets/images/menu/coleslaw.jpg" },
+
+  // ---- Rice ----
+  { name: "White Rice", nameAr: "رز أبيض", description: "Simple, fluffy steamed rice.", descAr: "رز أبيض مطهو على البخار، طري وبسيط.", price: 3000, category: "rice", tags: [], featured: false, image: "assets/images/menu/rice-white.jpg" },
+  { name: "Smoked Rice", nameAr: "رز مدخن", description: "Rice finished with a smoked edge.", descAr: "رز بنكهة مدخنة تضيف عمقًا لكل لقمة.", price: 3500, category: "rice", tags: [], featured: false, image: "assets/images/menu/rice-smoked.jpg" },
+  { name: "Kabsa Rice", nameAr: "رز كبسة", description: "Fragrant, spiced kabsa-style rice.", descAr: "رز على طريقة الكبسة، عطري ومتبّل بخلطة بهارات غنية.", price: 3000, category: "rice", tags: ["Popular"], featured: false, image: "assets/images/menu/rice-kabsa.jpg" },
 
   // ---- Sauces & Dips ----
-  { name: "BBQ Sauce", nameAr: "صلصة باربكيو", description: "Classic house BBQ.", descAr: "صلصة باربكيو البيت، على الوصفة الكلاسيكية.", price: 1000, category: "sauces", tags: [], featured: false, image: "assets/images/menu/sauce-bbq.jpg" },
-  { name: "Bang Bang Sauce", nameAr: "صلصة بانك بانك", description: "Our signature Bang Bang sauce.", descAr: "صلصة البانك بانك المميزة عندنا.", price: 1000, category: "sauces", tags: ["Signature"], featured: false, image: "assets/images/menu/sauce-bangbang.jpg" },
-  { name: "Spicy Sauce", nameAr: "صلصة حارة", description: "Straightforward heat.", descAr: "حرارة صريحة، بلا مجاملات.", price: 1000, category: "sauces", tags: [], featured: false, image: "assets/images/menu/sauce-spicy.jpg" },
-  { name: "Kaib Sauce", nameAr: "صلصة كيب", description: "Don Chicko's own kaib sauce.", descAr: "صلصة الكيب الخاصة بدون تشيكو.", price: 1000, category: "sauces", tags: [], featured: false, image: "assets/images/menu/sauce-kaib.jpg" },
+  { name: "Honey Mustard Sauce", nameAr: "صلصة هاني ماسترد", description: "Sweet and tangy honey mustard.", descAr: "صلصة هاني ماسترد بمزيج حلو وحامض.", price: 1000, category: "sauces", tags: [], featured: false, image: null },
+  { name: "Bang Bang Sauce", nameAr: "صلصة بانك بانك", description: "Our signature Bang Bang sauce.", descAr: "صلصة البانك بانك المميزة عندنا.", price: 1500, category: "sauces", tags: ["Signature"], featured: false, image: "assets/images/menu/sauce-bangbang.jpg" },
+  { name: "Kaib Sauce", nameAr: "صلصة كيب", description: "Don Chicko's own Kaib sauce.", descAr: "صلصة الكيب الخاصة بدون تشيكو.", price: 1500, category: "sauces", tags: [], featured: false, image: "assets/images/menu/sauce-kaib.jpg" },
+  { name: "Local BBQ Sauce", nameAr: "صلصة باربيكيو محلي", description: "Classic house BBQ.", descAr: "صلصة باربكيو البيت، على الوصفة الكلاسيكية.", price: 1000, category: "sauces", tags: [], featured: false, image: "assets/images/menu/sauce-bbq.jpg" },
+  { name: "Crevy Sauce", nameAr: "صلصة كريفي", description: "Don Chicko's creamy house Crevy sauce.", descAr: "صلصة كريفي الكريمية الخاصة بدون تشيكو.", price: 1500, category: "sauces", tags: [], featured: false, image: null },
+  { name: "Spicy Sauce", nameAr: "صلصة سبايسي", description: "Straightforward heat.", descAr: "حرارة صريحة، بلا مجاملات.", price: 1000, category: "sauces", tags: [], featured: false, image: "assets/images/menu/sauce-spicy.jpg" },
+  { name: "Garlic Sauce", nameAr: "صلصة ثومية", description: "Bold, creamy house garlic sauce.", descAr: "صلصة ثومية كريمية بنكهة قوية.", price: 1000, category: "sauces", tags: [], featured: false, image: null },
 
   // ---- Desserts ----
-  { name: "Double Chocolate Cookies", nameAr: "دبل تشوكلت كوكيز", description: "Warm, gooey double chocolate cookies.", descAr: "كوكيز بالشوكولاتة المزدوجة، دافئة وطرية من الداخل.", price: 3000, category: "desserts", tags: [], featured: false, image: "assets/images/menu/cookies-chocolate.jpg" },
-  { name: "Red Velvet Cookies", nameAr: "ريد فيلفت كوكيز", description: "Soft red velvet cookies with white chocolate.", descAr: "كوكيز الريد فيلفت الطرية، مع قطع الشوكولاتة البيضاء.", price: 3000, category: "desserts", tags: ["Popular"], featured: false, image: "assets/images/menu/cookies-red-velvet.jpg" },
-  { name: "Merry Cream", nameAr: "ميري كريم", description: "A sweet, creamy Don Chicko soft-serve dessert.", descAr: "حلوى آيسكريم كريمية حلوة، من توقيع دون تشيكو الخاص.", price: 3000, category: "desserts", tags: [], featured: false, image: "assets/images/menu/merry-cream.jpg" },
+  { name: "Double Chocolate Cookies", nameAr: "دبل تشوكلت كوكيز", description: "Warm, gooey double chocolate cookies.", descAr: "كوكيز بالشوكولاتة المزدوجة، دافئة وطرية من الداخل.", price: 3500, category: "desserts", tags: [], featured: false, image: "assets/images/menu/cookies-chocolate.jpg" },
+  { name: "Red Velvet Cookies", nameAr: "ريد فيلفت كوكيز", description: "Soft red velvet cookies with white chocolate.", descAr: "كوكيز الريد فيلفت الطرية، مع قطع الشوكولاتة البيضاء.", price: 3500, category: "desserts", tags: ["Popular"], featured: false, image: "assets/images/menu/cookies-red-velvet.jpg" },
+  { name: "Merry Cream", nameAr: "ميري كريم", description: "A sweet, creamy Don Chicko soft-serve dessert.", descAr: "حلوى آيسكريم كريمية حلوة، من توقيع دون تشيكو الخاص.", price: 2500, category: "desserts", tags: [], featured: false, image: "assets/images/menu/merry-cream.jpg" },
+  { name: "Peanut Butter Cookies", nameAr: "بينت بتر كوكيز", description: "Soft peanut butter cookies.", descAr: "كوكيز بزبدة الفول السوداني الطرية.", price: 3500, category: "desserts", tags: ["New"], featured: false, image: null },
 
   // ---- Drinks ----
   { name: "Water", nameAr: "ماء", description: "Bottled water.", descAr: "زجاجة ماء.", price: 500, category: "drinks", tags: [], featured: false, image: "assets/images/menu/water.jpg" },
-  { name: "Soft Drink", nameAr: "مشروب غازي", description: "Your choice of soft drink.", descAr: "مشروب غازي بحسب اختيارك.", price: 1500, category: "drinks", tags: [], featured: false, image: "assets/images/menu/soft-drink.jpg" },
-  { name: "Juice", nameAr: "عصير", description: "Chilled fruit juice.", descAr: "عصير فواكه بارد.", price: 1000, category: "drinks", tags: [], featured: false, image: "assets/images/menu/juice.jpg" },
-
-  // ---- Kids Meal ----
-  { name: "Kids Meal", nameAr: "وجبة الأطفال", description: "A kid-sized broasted chicken meal with fries — made by the Don, loved by all.", descAr: "وجبة بروستد بحجم يناسب الأطفال مع بطاطا مقلية — من صنع الدون، ويحبها الجميع.", price: 5000, category: "kids", tags: [], featured: false, image: "assets/images/menu/kids-meal.jpg" },
+  { name: "Soft Drink", nameAr: "مشروب غازي", description: "Your choice of soft drink.", descAr: "مشروب غازي بحسب اختيارك.", price: 750, category: "drinks", tags: [], featured: false, image: "assets/images/menu/soft-drink.jpg" },
+  { name: "Malt (Laban Ghazi)", nameAr: "لبن غازي", description: "Sparkling malt drink.", descAr: "مشروب اللبن الغازي المنعش.", price: 1000, category: "drinks", tags: [], featured: false, image: null },
+  { name: "Juice", nameAr: "عصير", description: "Chilled fruit juice.", descAr: "عصير فواكه بارد.", price: 500, category: "drinks", tags: [], featured: false, image: "assets/images/menu/juice.jpg" },
 ];
 
 const CATEGORIES = [
-  { id: "cold-starters", label: "Cold Starters & Salads", labelAr: "مقبلات باردة وسلطات" },
-  { id: "hot-starters", label: "Hot Starters", labelAr: "مقبلات ساخنة" },
   { id: "broasted", label: "Broasted Chicken", labelAr: "دجاج بروستد" },
   { id: "roasted", label: "Grilled Chicken", labelAr: "دجاج مشوي" },
-  { id: "rice", label: "Rice", labelAr: "أرز" },
+  { id: "chicken-strips", label: "Chicken Strips", labelAr: "ستربس الدجاج" },
   { id: "rice-bowls", label: "Rizo Bowls", labelAr: "ريزو" },
   { id: "sandwiches", label: "Sandwiches & Wraps", labelAr: "سندويشات ولفائف" },
   { id: "burgers", label: "Burgers", labelAr: "برغر" },
+  { id: "kids", label: "Kids Meal", labelAr: "وجبة الأطفال" },
+  { id: "hot-starters", label: "Hot Starters", labelAr: "مقبلات ساخنة" },
+  { id: "cold-starters", label: "Cold Starters", labelAr: "مقبلات باردة" },
+  { id: "salads", label: "Salads", labelAr: "سلطات" },
+  { id: "rice", label: "Rice", labelAr: "أرز" },
   { id: "sauces", label: "Sauces & Dips", labelAr: "صلصات وغماسات" },
   { id: "desserts", label: "Desserts", labelAr: "حلويات" },
   { id: "drinks", label: "Drinks", labelAr: "مشروبات" },
-  { id: "kids", label: "Kids Meal", labelAr: "وجبة الأطفال" },
 ];
 
 const TAG_LABELS = {
