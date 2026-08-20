@@ -512,8 +512,8 @@ body.lang-locked { overflow: hidden; }
 
 /* ==========================================================================
    FLAME MOTIF — every flame on the page is masked from the real logo mark,
-   never a generic icon. Used standalone via .flame-shape, and tiled into a
-   row along the top of every menu card (see .card-band).
+   never a generic icon. Used standalone via .flame-shape for decorative
+   accents throughout the page.
    ========================================================================== */
 
 /* Solid-color flame silhouette built by masking the real logo artwork —
@@ -752,33 +752,7 @@ body.lang-locked { overflow: hidden; }
   box-shadow: 11px 11px 0 var(--color-ink);
 }
 
-/* Flame band — just the wave *lines* from the client's flame artwork (see
-   /flames reference), extracted to a transparent-background PNG/WebP so the
-   solid --cat-color base still shows through underneath. Line color per
-   category set via --card-flame below. */
-.card-band {
-  position: relative;
-  height: 64px;
-  border-bottom: var(--border-thick) solid var(--color-ink);
-  background-color: var(--cat-color, var(--brand-orange));
-  background-image: var(--card-flame, none);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: hidden;
-}
-/* Soft wave along the bottom edge, so the flame art rises out of the photo
-   rather than sitting on a hard line. */
-.card-band::after {
-  content: "";
-  position: absolute;
-  left: -2px; right: -2px; bottom: -1px;
-  height: 10px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M0 20 C 20 0, 40 0, 60 12 C 80 20, 100 20, 120 8 C 140 -2, 160 4, 180 14 C 190 18, 195 20, 200 20 Z' fill='%23fffdf8'/%3E%3C/svg%3E");
-  background-size: 100% 100%;
-}
-
-/* Item photo, framed just below the flame band. Cards for items with no
+/* Item photo, framed at the top of the card. Cards for items with no
    photo (most sauces/dips) simply omit .card-media and stay compact. */
 .card-media {
   position: relative;
@@ -853,8 +827,8 @@ body.lang-locked { overflow: hidden; }
   font-family: var(--font-label);
   font-weight: 800;
   font-size: 0.95rem;
-  background: var(--color-ink);
-  color: var(--color-bg);
+  background: var(--cat-color, var(--color-ink));
+  color: var(--cat-badge-text, var(--color-bg));
   padding: 0.25rem 0.6rem;
   border-radius: var(--radius-sm);
   white-space: nowrap;
@@ -886,23 +860,21 @@ body.lang-locked { overflow: hidden; }
 }
 
 /* Category color assignment — matched to Don Chicko's real packaging palette.
-   --card-flame points at the client's flame-wave artwork (assets/patterns),
-   recolored per category from the same seven official brand hex values;
-   --cat-color is the fallback plain fill for anything that can't show the
-   image (e.g. print/no-image contexts) and stays behind it via
-   background-color. */
+   --cat-color drives the price badge background (.card-price); --cat-badge-text
+   overrides its text color to dark ink on the two light backgrounds (orange,
+   amber) where cream text wouldn't meet contrast. */
 .ticket-card[data-category="cold-starters"],
 .ticket-card[data-category="drinks"],
-.ticket-card[data-category="kids"] { --cat-color: var(--cat-cold); --card-flame: url("assets/patterns/card-flame-lines-ink.webp"); }
+.ticket-card[data-category="kids"] { --cat-color: var(--cat-cold); }
 .ticket-card[data-category="hot-starters"],
-.ticket-card[data-category="burgers"] { --cat-color: var(--cat-hot); --cat-text: var(--cat-hot-text); --card-flame: url("assets/patterns/card-flame-lines-red.webp"); }
-.ticket-card[data-category="broasted"] { --cat-color: var(--cat-broasted); --card-flame: url("assets/patterns/card-flame-lines-maroon.webp"); }
+.ticket-card[data-category="burgers"] { --cat-color: var(--cat-hot); --cat-text: var(--cat-hot-text); --cat-badge-text: var(--color-ink); }
+.ticket-card[data-category="broasted"] { --cat-color: var(--cat-broasted); }
 .ticket-card[data-category="roasted"],
-.ticket-card[data-category="sandwiches"] { --cat-color: var(--cat-roasted); --card-flame: url("assets/patterns/card-flame-lines-maroon.webp"); }
+.ticket-card[data-category="sandwiches"] { --cat-color: var(--cat-roasted); }
 .ticket-card[data-category="rice"],
 .ticket-card[data-category="rice-bowls"],
-.ticket-card[data-category="desserts"] { --cat-color: var(--cat-rice); --cat-text: var(--cat-rice-text); --card-flame: url("assets/patterns/card-flame-lines-orange.webp"); }
-.ticket-card[data-category="sauces"] { --cat-color: var(--cat-sauces); --card-flame: url("assets/patterns/card-flame-lines-maroon.webp"); }
+.ticket-card[data-category="desserts"] { --cat-color: var(--cat-rice); --cat-text: var(--cat-rice-text); --cat-badge-text: var(--color-ink); }
+.ticket-card[data-category="sauces"] { --cat-color: var(--cat-sauces); }
 
 /* ==========================================================================
    FEATURED MENU — "The Don's Picks"
@@ -1543,10 +1515,6 @@ body.lang-locked { overflow: hidden; }
 /* Cosmetic tilts read more natural mirrored. */
 [dir="rtl"] .card-price { transform: rotate(-3deg); }
 [dir="rtl"] .card-media .card-badge { transform: rotate(-3deg); }
-/* The flame-wave art flows dense-to-sparse left-to-right; mirror it so
-   that flow reads from the text-start side in RTL, like the rest of the
-   site's directional decoration. */
-[dir="rtl"] .card-band { transform: scaleX(-1); }
 [dir="rtl"] .filter-tab:hover { transform: translateY(-2px) rotate(1deg); }
 [dir="rtl"] .featured-grid .ticket-card:nth-child(1) { --hover-rotate: 2deg; transform: rotate(1.5deg); }
 [dir="rtl"] .featured-grid .ticket-card:nth-child(2) { --hover-rotate: -1.5deg; transform: rotate(-1deg); }

@@ -122,7 +122,6 @@ function createMenuCard(item, { featured = false } = {}) {
   card.dataset.itemName = item.name;
 
   card.innerHTML = `
-    <div class="card-band" aria-hidden="true"></div>
     ${item.image ? `<div class="card-media"><picture><source srcset="${item.image.replace(/\.jpg$/, ".webp")}" type="image/webp"><img src="${item.image}" alt="" loading="lazy" width="600" height="450"></picture></div>` : ""}
     <div class="card-body">
       <div class="card-top-row">
