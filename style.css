@@ -752,21 +752,22 @@ body.lang-locked { overflow: hidden; }
   box-shadow: 11px 11px 0 var(--color-ink);
 }
 
-/* Flame band — a diagonal two-tone stripe pulled straight from Don Chicko's
-   own packaging line art (see /flames reference), built only from official
-   brand hex values. */
+/* Flame band — the client's own flame-wave artwork (see /flames reference),
+   recolored per category using only official brand hex values (see the
+   --card-flame assignments below). Same two-tone motif as the packaging
+   line art, just the wave illustration instead of a diagonal stripe. */
 .card-band {
   position: relative;
-  height: 40px;
+  height: 64px;
   border-bottom: var(--border-thick) solid var(--color-ink);
-  background: repeating-linear-gradient(
-    -38deg,
-    var(--cat-color, var(--brand-orange)) 0 16px,
-    var(--cat-color-2, var(--brand-red)) 16px 32px
-  );
+  background-color: var(--cat-color, var(--brand-orange));
+  background-image: var(--card-flame, none);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   overflow: hidden;
 }
-/* Soft wave along the bottom edge, so the stripe rises out of the photo
+/* Soft wave along the bottom edge, so the flame art rises out of the photo
    rather than sitting on a hard line. */
 .card-band::after {
   content: "";
@@ -885,20 +886,23 @@ body.lang-locked { overflow: hidden; }
 }
 
 /* Category color assignment — matched to Don Chicko's real packaging palette.
-   --cat-color-2 is the flame band's second diagonal stripe (see .card-band);
-   both colors always come straight from the seven official brand hex values. */
+   --card-flame points at the client's flame-wave artwork (assets/patterns),
+   recolored per category from the same seven official brand hex values;
+   --cat-color is the fallback plain fill for anything that can't show the
+   image (e.g. print/no-image contexts) and stays behind it via
+   background-color. */
 .ticket-card[data-category="cold-starters"],
 .ticket-card[data-category="drinks"],
-.ticket-card[data-category="kids"] { --cat-color: var(--cat-cold); --cat-color-2: var(--brand-ink); }
+.ticket-card[data-category="kids"] { --cat-color: var(--cat-cold); --card-flame: url("assets/patterns/card-flame-blue-ink.webp"); }
 .ticket-card[data-category="hot-starters"],
-.ticket-card[data-category="burgers"] { --cat-color: var(--cat-hot); --cat-text: var(--cat-hot-text); --cat-color-2: var(--brand-red); }
-.ticket-card[data-category="broasted"] { --cat-color: var(--cat-broasted); --cat-color-2: var(--brand-maroon); }
+.ticket-card[data-category="burgers"] { --cat-color: var(--cat-hot); --cat-text: var(--cat-hot-text); --card-flame: url("assets/patterns/card-flame-orange-red.webp"); }
+.ticket-card[data-category="broasted"] { --cat-color: var(--cat-broasted); --card-flame: url("assets/patterns/card-flame-red-maroon.webp"); }
 .ticket-card[data-category="roasted"],
-.ticket-card[data-category="sandwiches"] { --cat-color: var(--cat-roasted); --cat-color-2: var(--brand-orange); }
+.ticket-card[data-category="sandwiches"] { --cat-color: var(--cat-roasted); --card-flame: url("assets/patterns/card-flame-orange-maroon.webp"); }
 .ticket-card[data-category="rice"],
 .ticket-card[data-category="rice-bowls"],
-.ticket-card[data-category="desserts"] { --cat-color: var(--cat-rice); --cat-text: var(--cat-rice-text); --cat-color-2: var(--brand-orange); }
-.ticket-card[data-category="sauces"] { --cat-color: var(--cat-sauces); --cat-color-2: var(--brand-maroon); }
+.ticket-card[data-category="desserts"] { --cat-color: var(--cat-rice); --cat-text: var(--cat-rice-text); --card-flame: url("assets/patterns/card-flame-amber-orange.webp"); }
+.ticket-card[data-category="sauces"] { --cat-color: var(--cat-sauces); --card-flame: url("assets/patterns/card-flame-ink-maroon.webp"); }
 
 /* ==========================================================================
    FEATURED MENU — "The Don's Picks"
@@ -1029,8 +1033,6 @@ body.lang-locked { overflow: hidden; }
   align-items: baseline;
   gap: var(--space-sm);
   margin-bottom: var(--space-md);
-  padding-bottom: 0.6rem;
-  border-bottom: var(--border-thick) solid var(--color-ink);
 }
 .menu-category-title {
   font-family: var(--font-display);
@@ -1541,6 +1543,10 @@ body.lang-locked { overflow: hidden; }
 /* Cosmetic tilts read more natural mirrored. */
 [dir="rtl"] .card-price { transform: rotate(-3deg); }
 [dir="rtl"] .card-media .card-badge { transform: rotate(-3deg); }
+/* The flame-wave art flows dense-to-sparse left-to-right; mirror it so
+   that flow reads from the text-start side in RTL, like the rest of the
+   site's directional decoration. */
+[dir="rtl"] .card-band { transform: scaleX(-1); }
 [dir="rtl"] .filter-tab:hover { transform: translateY(-2px) rotate(1deg); }
 [dir="rtl"] .featured-grid .ticket-card:nth-child(1) { --hover-rotate: 2deg; transform: rotate(1.5deg); }
 [dir="rtl"] .featured-grid .ticket-card:nth-child(2) { --hover-rotate: -1.5deg; transform: rotate(-1deg); }
