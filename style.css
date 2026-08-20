@@ -412,6 +412,7 @@ body.lang-locked { overflow: hidden; }
   background: var(--color-bg);
   border-bottom: var(--border-thick) solid var(--color-ink);
 }
+.menu-page .site-header { border-bottom: none; }
 .navbar {
   max-width: var(--content-max);
   margin: 0 auto;
@@ -953,7 +954,6 @@ body.lang-locked { overflow: hidden; }
   top: var(--header-height);
   z-index: 90;
   background: var(--color-bg);
-  border-bottom: var(--border-thick) solid var(--color-ink);
 }
 .menu-filters {
   max-width: var(--content-max);
