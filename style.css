@@ -752,10 +752,10 @@ body.lang-locked { overflow: hidden; }
   box-shadow: 11px 11px 0 var(--color-ink);
 }
 
-/* Flame band — the client's own flame-wave artwork (see /flames reference),
-   recolored per category using only official brand hex values (see the
-   --card-flame assignments below). Same two-tone motif as the packaging
-   line art, just the wave illustration instead of a diagonal stripe. */
+/* Flame band — just the wave *lines* from the client's flame artwork (see
+   /flames reference), extracted to a transparent-background PNG/WebP so the
+   solid --cat-color base still shows through underneath. Line color per
+   category set via --card-flame below. */
 .card-band {
   position: relative;
   height: 64px;
@@ -893,16 +893,16 @@ body.lang-locked { overflow: hidden; }
    background-color. */
 .ticket-card[data-category="cold-starters"],
 .ticket-card[data-category="drinks"],
-.ticket-card[data-category="kids"] { --cat-color: var(--cat-cold); --card-flame: url("assets/patterns/card-flame-blue-ink.webp"); }
+.ticket-card[data-category="kids"] { --cat-color: var(--cat-cold); --card-flame: url("assets/patterns/card-flame-lines-ink.webp"); }
 .ticket-card[data-category="hot-starters"],
-.ticket-card[data-category="burgers"] { --cat-color: var(--cat-hot); --cat-text: var(--cat-hot-text); --card-flame: url("assets/patterns/card-flame-orange-red.webp"); }
-.ticket-card[data-category="broasted"] { --cat-color: var(--cat-broasted); --card-flame: url("assets/patterns/card-flame-red-maroon.webp"); }
+.ticket-card[data-category="burgers"] { --cat-color: var(--cat-hot); --cat-text: var(--cat-hot-text); --card-flame: url("assets/patterns/card-flame-lines-red.webp"); }
+.ticket-card[data-category="broasted"] { --cat-color: var(--cat-broasted); --card-flame: url("assets/patterns/card-flame-lines-maroon.webp"); }
 .ticket-card[data-category="roasted"],
-.ticket-card[data-category="sandwiches"] { --cat-color: var(--cat-roasted); --card-flame: url("assets/patterns/card-flame-orange-maroon.webp"); }
+.ticket-card[data-category="sandwiches"] { --cat-color: var(--cat-roasted); --card-flame: url("assets/patterns/card-flame-lines-maroon.webp"); }
 .ticket-card[data-category="rice"],
 .ticket-card[data-category="rice-bowls"],
-.ticket-card[data-category="desserts"] { --cat-color: var(--cat-rice); --cat-text: var(--cat-rice-text); --card-flame: url("assets/patterns/card-flame-amber-orange.webp"); }
-.ticket-card[data-category="sauces"] { --cat-color: var(--cat-sauces); --card-flame: url("assets/patterns/card-flame-ink-maroon.webp"); }
+.ticket-card[data-category="desserts"] { --cat-color: var(--cat-rice); --cat-text: var(--cat-rice-text); --card-flame: url("assets/patterns/card-flame-lines-orange.webp"); }
+.ticket-card[data-category="sauces"] { --cat-color: var(--cat-sauces); --card-flame: url("assets/patterns/card-flame-lines-maroon.webp"); }
 
 /* ==========================================================================
    FEATURED MENU — "The Don's Picks"
