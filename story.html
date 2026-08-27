@@ -2,11 +2,22 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+  /* Runs before the language overlay markup below is parsed, so a
+     session that already chose a language never sees it flash on this
+     page load — see the matching html.lang-preset rule in style.css. */
+  (function () {
+    try {
+      var lang = sessionStorage.getItem("donchicko_lang");
+      if (lang === "en" || lang === "ar") document.documentElement.classList.add("lang-preset");
+    } catch (e) {}
+  })();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title data-i18n="meta.titleStory">Our Story — Don Chicko</title>
 <meta name="description" data-i18n-attr-content="meta.descriptionStory" content="The story of Don Chicko: born in Baghdad, built on four flames — Passion, Precision, Togetherness, Character.">
 <link rel="icon" type="image/png" href="assets/logos/flame-color.png">
-<link rel="stylesheet" href="style.css?v=27">
+<link rel="stylesheet" href="style.css?v=28">
 </head>
 <body>
 

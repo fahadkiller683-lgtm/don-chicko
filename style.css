@@ -305,6 +305,12 @@ button { font: inherit; cursor: pointer; }
    ========================================================================== */
 body.lang-locked { overflow: hidden; }
 
+/* Set synchronously by the inline script at the top of <head>, before the
+   overlay markup below is even parsed, whenever a language is already
+   chosen for this session — otherwise the overlay (opacity: 1 by default)
+   paints for a frame on every page navigation before JS can remove it. */
+html.lang-preset #langOverlay { display: none; }
+
 .lang-overlay {
   position: fixed;
   inset: 0;
