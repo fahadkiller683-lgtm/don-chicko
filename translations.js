@@ -15,6 +15,8 @@ const translations = {
       descriptionHome: "Don Chicko: Baghdad's chicken experience that stays with you. Grilled or fried, marinated to the center, built on four flames — Passion, Precision, Togetherness, Character.",
       titleMenu: "The Menu — Don Chicko",
       descriptionMenu: "Don Chicko's full menu: broasted and roasted chicken, sandwiches, burgers, starters, rice, house sauces and desserts. Grilled or fried, always cooked to the center.",
+      titleStory: "Our Story — Don Chicko",
+      descriptionStory: "The story of Don Chicko: born in Baghdad, built on four flames — Passion, Precision, Togetherness, Character.",
     },
     a11y: {
       skipLink: "Skip to main content",
@@ -94,6 +96,8 @@ const translations = {
       descriptionHome: "دون تشيكو تجربة دجاج بغدادية تبقى في ذاكرتك، مشويًا كان أم مقليًا ومتبّلًا حتى النخاع، وقائمة على أربع شُعل: الشغف، والدقة، والترابط، والشخصية.",
       titleMenu: "قائمة الطعام — دون تشيكو",
       descriptionMenu: "القائمة الكاملة لدون تشيكو: دجاج بروستد ومشوي، سندويشات، برغر، مقبلات، أرز، صلصات بيتية وحلويات — مشويًا أو مقليًا، ودائمًا مطهو حتى النخاع.",
+      titleStory: "قصتنا — دون تشيكو",
+      descriptionStory: "قصة دون تشيكو: وُلدت في بغداد، وقامت على أربع شُعل: الشغف، والدقة، والترابط، والشخصية.",
     },
     a11y: {
       skipLink: "تخطَّ إلى المحتوى الرئيسي",

@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title data-i18n="meta.titleMenu">The Menu — Don Chicko</title>
-<meta name="description" data-i18n-attr-content="meta.descriptionMenu" content="Don Chicko's full menu: broasted and roasted chicken, sandwiches, burgers, starters, rice, house sauces and desserts. Grilled or fried, always cooked to the center.">
+<title data-i18n="meta.titleStory">Our Story — Don Chicko</title>
+<meta name="description" data-i18n-attr-content="meta.descriptionStory" content="The story of Don Chicko: born in Baghdad, built on four flames — Passion, Precision, Togetherness, Character.">
 <link rel="icon" type="image/png" href="assets/logos/flame-color.png">
 <link rel="stylesheet" href="style.css?v=27">
 </head>
-<body class="menu-page">
+<body>
 
 <!-- Skip link for keyboard/screen reader users -->
 <a class="skip-link" href="#main-content" data-i18n="a11y.skipLink">Skip to main content</a>
@@ -50,8 +50,8 @@
 
     <ul class="nav-menu" id="primaryMenu">
       <li><a href="index.html" class="nav-link" data-i18n="nav.home">Home</a></li>
-      <li><a href="menu.html" class="nav-link" aria-current="page" data-i18n="nav.menu">Menu</a></li>
-      <li><a href="story.html" class="nav-link" data-i18n="nav.story">Our Story</a></li>
+      <li><a href="menu.html" class="nav-link" data-i18n="nav.menu">Menu</a></li>
+      <li><a href="story.html" class="nav-link" aria-current="page" data-i18n="nav.story">Our Story</a></li>
       <li><a href="index.html#visit" class="nav-link" data-i18n="nav.visit">Visit</a></li>
       <li><a href="index.html#visit" class="nav-link nav-cta" data-i18n="nav.findUs">Find Us</a></li>
       <li class="lang-switch" role="group" data-i18n-attr-aria-label="a11y.switchLanguage" aria-label="Switch language">
@@ -65,46 +65,67 @@
 <main id="main-content">
 
   <!-- ============================= -->
-  <!-- MENU PAGE HEADER -->
+  <!-- ABOUT / BRAND STORY -->
   <!-- ============================= -->
-  <section class="menu-hero">
-    <div class="menu-hero-decor" aria-hidden="true">
-      <span class="menu-hero-flame menu-hero-flame-1 flame-shape"></span>
-      <span class="menu-hero-flame menu-hero-flame-2 flame-shape"></span>
-      <span class="menu-hero-flame menu-hero-flame-3 flame-shape"></span>
-    </div>
-    <div class="menu-hero-inner">
-      <p class="eyebrow" data-i18n="menuPage.eyebrow">Built on Four Flames</p>
-      <h1 class="menu-hero-title" data-i18n="menuPage.title">The Menu</h1>
-      <p class="menu-hero-copy" data-i18n="menuPage.copy">
-        Every category, straight from Don Chicko's own recipe board.
-        Grilled or fried — always marinated to the center.
-      </p>
-    </div>
-  </section>
+  <section class="about-section">
+    <div class="about-top">
+      <div class="about-visual">
+        <picture>
+          <source srcset="assets/images/grilled-chicken-skillet-sm.webp 600w, assets/images/grilled-chicken-skillet.webp 1050w" sizes="(max-width: 960px) 380px, 500px" type="image/webp">
+          <img srcset="assets/images/grilled-chicken-skillet-sm.jpg 600w, assets/images/grilled-chicken-skillet.jpg 1050w" sizes="(max-width: 960px) 380px, 500px" src="assets/images/grilled-chicken-skillet.jpg" data-i18n-attr-alt="about.visualAlt" alt="Grilled Don Chicko chicken with herbs, tomatoes and fresh bread, plated on a sizzling skillet" loading="lazy" decoding="async">
+        </picture>
+        <div class="about-visual-badge">
+          <span class="flame-shape" aria-hidden="true"></span>
+          <span data-i18n="about.visualBadge">Made by the Don</span>
+        </div>
+      </div>
 
-  <!-- ============================= -->
-  <!-- CATEGORY JUMP BAR -->
-  <!-- ============================= -->
-  <div class="menu-jumpbar">
-    <nav class="menu-filters" id="menuFilters" data-i18n-attr-aria-label="a11y.categoryJump" aria-label="Jump to a menu category">
-      <!-- Category links injected by JavaScript -->
-    </nav>
-  </div>
-
-  <!-- ============================= -->
-  <!-- FULL MENU — every category, stacked -->
-  <!-- ============================= -->
-  <section class="menu-section" id="menu">
-    <div id="menuCategories">
-      <!-- Category sections + cards injected by JavaScript -->
+      <div class="about-content">
+        <p class="eyebrow" data-i18n="about.eyebrow">Our Story</p>
+        <h1 data-i18n="about.title">Baghdad, Let's Rise</h1>
+        <p class="about-lede" data-i18n="about.lede">
+          Nobody knows exactly who he is. Some say he ran a spice route between Beirut and
+          Basra. Others say he's an old soul chasing the perfect bite. One thing is certain:
+          Don Chicko is Baghdadi — and he lives for chicken.
+        </p>
+        <p data-i18n="about.body">
+          Not the ordinary kind. The kind you bite once and never forget. Crispy or grilled,
+          skin or center — he wanted it all to hit right. So he did what every good chef does:
+          he built a fire. Not just any fire — he lit it with four flames.
+        </p>
+        <div class="about-stat">
+          <span class="about-stat-number">4</span>
+          <span class="about-stat-label" data-i18n-html="about.statLabelHtml">Friends.<br>One flame.</span>
+        </div>
+      </div>
     </div>
 
-    <p class="menu-note" data-i18n-html="menuPage.noteHtml">
-      Prices shown in Iraqi Dinar. Menu subject to change — follow
-      <a href="https://instagram.com/donchicko" target="_blank" rel="noopener">@donchicko</a>
-      for new arrivals.
-    </p>
+    <div class="flames-heading">
+      <p class="eyebrow" data-i18n="about.flamesEyebrow">The Flames</p>
+      <h2 data-i18n="about.flamesTitle">Everything we do comes from one of these four</h2>
+    </div>
+    <div class="flames-grid">
+      <article class="flame-card">
+        <span class="flame-card-icon flame-shape" aria-hidden="true"></span>
+        <h3 data-i18n="about.flame1Title">Flame of Passion</h3>
+        <p data-i18n="about.flame1Desc">Chicken done right — juicy, crispy, unforgettable. Marinated to the center, not just the skin.</p>
+      </article>
+      <article class="flame-card">
+        <span class="flame-card-icon flame-shape" aria-hidden="true"></span>
+        <h3 data-i18n="about.flame2Title">Flame of Precision</h3>
+        <p data-i18n="about.flame2Desc">Care. Timing. Temperature. Sequence. Good chicken can't save bad execution.</p>
+      </article>
+      <article class="flame-card">
+        <span class="flame-card-icon flame-shape" aria-hidden="true"></span>
+        <h3 data-i18n="about.flame3Title">Flame of Togetherness</h3>
+        <p data-i18n="about.flame3Desc">No vision comes to life alone. Dishes made to be shared, at a table that feels like home.</p>
+      </article>
+      <article class="flame-card">
+        <span class="flame-card-icon flame-shape" aria-hidden="true"></span>
+        <h3 data-i18n="about.flame4Title">Flame of Character</h3>
+        <p data-i18n="about.flame4Desc">The Baghdadi spirit — bold, rooted, unmistakable. When you have your own flavor, you don't need to shout.</p>
+      </article>
+    </div>
   </section>
 
 </main>
