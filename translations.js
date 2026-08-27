@@ -310,7 +310,13 @@ const translations = {
     wireLangSwitchButtons();
   }
 
-  document.addEventListener("DOMContentLoaded", initLanguageOverlay);
+  /* Called directly, not on DOMContentLoaded: this script tag sits at the
+     end of <body>, after every element it touches, so the DOM it needs
+     already exists the moment this line runs. Waiting for the
+     DOMContentLoaded *event* instead of just running inline hands the
+     browser a chance to paint the untranslated, English/LTR markup for a
+     frame first — exactly the flash this is here to prevent. */
+  initLanguageOverlay();
 
   window.DonChickoI18n = {
     t,
