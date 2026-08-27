@@ -282,7 +282,7 @@ button { font: inherit; cursor: pointer; }
 }
 .btn-primary {
   background: var(--brand-orange);
-  color: var(--color-surface);
+  color: var(--color-ink);
   box-shadow: var(--shadow-card-sm);
 }
 .btn-secondary {
@@ -784,7 +784,7 @@ body.lang-locked { overflow: hidden; }
 .card-badge {
   display: inline-block;
   font-family: var(--font-label);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
