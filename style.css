@@ -1331,13 +1331,12 @@ html.lang-preset #langOverlay { display: none; }
    to zoom deep into every image's vertical center to fill it, no matter how
    generous the source crop is. Growing .hero's own height on wide screens
    keeps that ratio closer to what the photos were actually cropped for.
-   .hero-inner is the only in-flow child (the photo/decor/toggle are all
-   position: absolute, so flex doesn't touch them); centering it stops the
-   text from being stranded at the top of the now-taller section. */
+   min-height alone (no flex/centering) leaves the text exactly where it
+   already was — block layout keeps it anchored at the top after
+   padding-top, and the extra room from min-height just shows as more
+   photo below the CTA buttons instead of shifting the headline down. */
 @media (min-width: 961px) {
   .hero {
-    display: flex;
-    align-items: center;
     min-height: clamp(700px, 57vw, 1200px);
   }
 }
