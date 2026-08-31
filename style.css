@@ -1323,6 +1323,25 @@ html.lang-preset #langOverlay { display: none; }
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */
+/* .hero's height is purely content-driven (see .hero-photo above), and past
+   ~1200px wide the headline's font-size clamp is maxed out, so the text
+   block's height stops growing while the section keeps getting wider. On a
+   typical 1920px desktop that leaves a photo band around 2.4:1 — much wider
+   than the 1.5:1 the hero photos are cropped at — so object-fit: cover has
+   to zoom deep into every image's vertical center to fill it, no matter how
+   generous the source crop is. Growing .hero's own height on wide screens
+   keeps that ratio closer to what the photos were actually cropped for.
+   .hero-inner is the only in-flow child (the photo/decor/toggle are all
+   position: absolute, so flex doesn't touch them); centering it stops the
+   text from being stranded at the top of the now-taller section. */
+@media (min-width: 961px) {
+  .hero {
+    display: flex;
+    align-items: center;
+    min-height: clamp(700px, 57vw, 1200px);
+  }
+}
+
 @media (max-width: 960px) {
   .featured-grid { grid-template-columns: 1fr; }
   .featured-grid .ticket-card:nth-child(2) { margin-top: 0; }
