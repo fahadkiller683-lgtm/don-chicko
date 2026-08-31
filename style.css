@@ -1382,6 +1382,36 @@ html.lang-preset #langOverlay { display: none; }
 
   .hero-photo img { object-position: 50% 30%; }
   .flames-grid { grid-template-columns: 1fr; }
+
+  /* On narrow viewports the headline wraps to many more lines, so .hero's
+     content-driven height balloons far past its width — the resulting
+     photo box gets so tall and narrow that object-fit: cover has to zoom
+     deep into the source image to fill it, destroying the crop no matter
+     which photo is used. Capping the photo band to a sane width-relative
+     height (independent of how tall the text stack grows) keeps the crop
+     readable; the plain --color-ink background shows below it, matching
+     the gradient's own color so the join reads as a deliberate fade
+     rather than a seam. */
+  .hero-photo {
+    top: 0;
+    bottom: auto;
+    height: min(80vw, 460px);
+  }
+  .hero-photo::after {
+    background:
+      linear-gradient(180deg, rgba(42, 44, 43, 0) 65%, rgba(42, 44, 43, 1) 100%),
+      linear-gradient(100deg, rgba(42, 44, 43, 0.94) 0%, rgba(42, 44, 43, 0.86) 32%, rgba(42, 44, 43, 0.35) 62%, rgba(42, 44, 43, 0.05) 85%);
+  }
+  /* .hero-slide-toggle anchors to var(--space-md) from .hero's own bottom
+     edge, which is fine when the photo fills the section — but the photo
+     band above is now much shorter than .hero's full (text-driven) height,
+     so that anchor leaves it stranded over the CTA buttons instead of
+     sitting on the photo it controls. Pin it to the photo's own bottom
+     edge instead. */
+  .hero-slide-toggle {
+    top: calc(min(80vw, 460px) - 36px - var(--space-sm));
+    bottom: auto;
+  }
 }
 
 @media (max-width: 520px) {
