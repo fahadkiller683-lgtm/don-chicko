@@ -39,7 +39,7 @@ const translations = {
       copy: "Built on trust. Made with depth. Served with pride. Don Chicko is the chicken experience that stays with you — born in Baghdad, made for everywhere.",
       ctaMenu: "See the Menu",
       ctaStory: "Our Story",
-      photoAlt: "Crispy chicken tenders and fries with ketchup and mayo, on a dark scorched-orange surface",
+      photoAlt: "Crispy chicken tenders on a wire rack surrounded by house dipping sauces",
     },
     featured: {
       eyebrow: "Straight From the Flame",
@@ -120,7 +120,7 @@ const translations = {
       copy: "دون تشيكو ليست مجرد أكلة، بل تجربة دجاج تبقى في ذاكرتك من أول قضمة. نكهة بغدادية أصيلة، وُلدت بثقة وشغف، وها هي اليوم تصل إلى كل مكان.",
       ctaMenu: "تصفح قائمة الطعام",
       ctaStory: "قصتنا",
-      photoAlt: "أصابع دجاج مقرمشة وبطاطا مقلية مع الكاتشب والمايونيز، على سطح داكن بلون البرتقالي المحروق",
+      photoAlt: "أصابع دجاج مقرمشة على شبكة معدنية، محاطة بصلصات البيت",
     },
     featured: {
       eyebrow: "مباشرة من النار",
