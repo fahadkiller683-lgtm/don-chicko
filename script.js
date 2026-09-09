@@ -30,7 +30,7 @@ const MENU_ITEMS = [
 
   // ---- Chicken Strips ----
   { name: "Chicken Strips Meal - 5 Pieces", nameAr: "ستربس الدجاج - وجبة 5 قطع", description: "5 hand-breaded chicken strips with fries, coleslaw, lemon, 3 pieces of bread, and a 330ml soft drink.", descAr: "5 قطع ستربس دجاج مقرمشة مع البطاطا المقلية والكولسلو والليمون و3 أرغفة صمون، ومشروب غازي 330 مل.", price: 10000, category: "chicken-strips", tags: ["Popular"], featured: false, image: "assets/images/menu/chicken-strips.jpg" },
-  { name: "Chicken Strips Meal - 15 Pieces", nameAr: "ستربس الدجاج - وجبة 15 قطعة", description: "15 hand-breaded chicken strips with large fries, large coleslaw, 3 lemon wedges, 7 pieces of bread, and a 1.75L soft drink.", descAr: "15 قطعة ستربس دجاج مقرمشة مع بطاطا مقلية كبيرة وكولسلو كبير و3 قطع ليمون و7 أرغفة صمون، ومشروب غازي 1.75 لتر.", price: 26000, category: "chicken-strips", tags: [], featured: false, image: "assets/images/menu/chicken-strips.jpg" },
+  { name: "Chicken Strips Meal - 15 Pieces", nameAr: "ستربس الدجاج - وجبة 15 قطعة", description: "15 hand-breaded chicken strips with large fries, large coleslaw, 3 lemon wedges, 7 pieces of bread, and a 1.75L soft drink.", descAr: "15 قطعة ستربس دجاج مقرمشة مع بطاطا مقلية كبيرة وكولسلو كبير و3 قطع ليمون و7 أرغفة صمون، ومشروب غازي 1.75 لتر.", price: 26000, category: "chicken-strips", tags: [], featured: false, image: "assets/images/menu/chicken-strips-15pc.jpg" },
 
   // ---- Rizo Bowls ----
   { name: "Rizo Classic", nameAr: "ريزو كلاسيك", description: "White rice topped with chopped crispy chicken strips and our classic house sauce.", descAr: "رز أبيض مع قطع ستربس الدجاج المقرمشة وصلصتنا الكلاسيكية.", price: 6500, category: "rice-bowls", tags: [], featured: false, image: "assets/images/menu/rizo-classic.jpg" },
