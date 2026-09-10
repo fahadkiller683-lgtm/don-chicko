@@ -1175,54 +1175,6 @@ html.lang-preset #langOverlay { display: none; }
 }
 .about-visual picture { display: block; width: 100%; height: 100%; }
 .about-visual img { width: 100%; height: 100%; object-fit: cover; }
-/* The English badge photo bakes its "the secret ingredient is always love"
-   text into the raster image itself, so it can't be translated by the i18n
-   engine. This CSS-built equivalent replaces it for Arabic instead of
-   showing the same English text to an Arabic-reading visitor. */
-.about-visual-ar {
-  display: none;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  background: var(--brand-orange);
-}
-.about-visual-ar-circle {
-  width: 84%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--brand-maroon);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  text-align: center;
-  padding: var(--space-md);
-}
-.about-visual-ar-line1 {
-  font-family: var(--font-display);
-  color: var(--brand-cream);
-  font-size: clamp(1.1rem, 1vw + 0.9rem, 1.4rem);
-}
-.about-visual-ar-line2 {
-  font-family: var(--font-display);
-  color: var(--brand-orange);
-  font-size: clamp(1.4rem, 1.5vw + 1rem, 1.8rem);
-}
-.about-visual-ar-line3 {
-  font-family: var(--font-display);
-  color: var(--brand-orange);
-  font-size: clamp(2rem, 3vw + 1rem, 2.8rem);
-}
-.about-visual-ar .flame-shape {
-  width: 40px;
-  height: 48px;
-  color: var(--brand-cream);
-  margin-top: var(--space-xs);
-}
-[dir="rtl"] .about-visual-photo { display: none; }
-[dir="rtl"] .about-visual-ar { display: flex; }
 .about-visual-badge {
   position: absolute;
   bottom: var(--space-sm);
