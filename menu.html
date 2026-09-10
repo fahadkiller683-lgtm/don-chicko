@@ -17,7 +17,7 @@
 <title data-i18n="meta.titleMenu">The Menu — Don Chicko</title>
 <meta name="description" data-i18n-attr-content="meta.descriptionMenu" content="Don Chicko's full menu: broasted and roasted chicken, sandwiches, burgers, starters, rice, house sauces and desserts. Grilled or fried, always cooked to the center.">
 <link rel="icon" type="image/png" href="assets/logos/flame-color.png">
-<link rel="stylesheet" href="style.css?v=35">
+<link rel="stylesheet" href="style.css?v=50">
 </head>
 <body class="menu-page">
 
@@ -98,9 +98,14 @@
   <!-- CATEGORY JUMP BAR -->
   <!-- ============================= -->
   <div class="menu-jumpbar">
-    <nav class="menu-filters" id="menuFilters" data-i18n-attr-aria-label="a11y.categoryJump" aria-label="Jump to a menu category">
-      <!-- Category links injected by JavaScript -->
-    </nav>
+    <div class="menu-filters-wrap">
+      <nav class="menu-filters" id="menuFilters" data-i18n-attr-aria-label="a11y.categoryJump" aria-label="Jump to a menu category">
+        <!-- Category links injected by JavaScript -->
+      </nav>
+    </div>
+    <div class="menu-tagbar" id="menuTagbar" role="group" data-i18n-attr-aria-label="a11y.filterByTag" aria-label="Filter by tag">
+      <!-- Tag filter chips injected by JavaScript -->
+    </div>
   </div>
 
   <!-- ============================= -->
@@ -148,7 +153,7 @@
   </div>
 </footer>
 
-<script src="translations.js?v=10"></script>
-<script src="script.js?v=10"></script>
+<script src="translations.js?v=12"></script>
+<script src="script.js?v=13"></script>
 </body>
 </html>

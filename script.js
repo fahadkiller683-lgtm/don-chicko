@@ -198,16 +198,28 @@ function refreshMenuLanguage() {
   document.querySelectorAll(".menu-category").forEach((section) => {
     const cat = CATEGORIES.find((c) => c.id === section.dataset.category);
     if (!cat) return;
-    const items = MENU_ITEMS.filter((i) => i.category === cat.id);
     const title = section.querySelector(".menu-category-title");
     if (title) title.textContent = lang === "ar" ? cat.labelAr : cat.label;
+    // Count only non-hidden cards, so an active tag filter's count survives
+    // a language switch instead of reverting to the category's full total.
+    const visibleCount = section.querySelectorAll(".ticket-card[data-item-name]:not([hidden])").length;
     const count = section.querySelector(".menu-category-count");
-    if (count) count.textContent = formatItemCount(items.length, lang);
+    if (count) count.textContent = formatItemCount(visibleCount, lang);
   });
 
   document.querySelectorAll(".filter-tab").forEach((link) => {
     const cat = CATEGORIES.find((c) => c.id === link.dataset.category);
     if (cat) link.textContent = lang === "ar" ? cat.labelAr : cat.label;
+  });
+
+  function t(key, fallback) {
+    return window.DonChickoI18n ? window.DonChickoI18n.t(key) : fallback;
+  }
+  document.querySelectorAll("#menuTagbar .filter-tab").forEach((btn) => {
+    btn.textContent = btn.dataset.tag ? TAG_LABELS[btn.dataset.tag][lang] : t("menuPage.tagAll", "All");
+  });
+  document.querySelectorAll(".menu-category-empty").forEach((empty) => {
+    empty.textContent = t("menuPage.noMatch", "No items match this filter.");
   });
 }
 
@@ -295,6 +307,91 @@ function renderCategoryJumpLinks() {
   });
 }
 
+/** Render the "All" + per-tag filter chips into #menuTagbar (menu page only). */
+function renderTagFilters() {
+  const bar = document.getElementById("menuTagbar");
+  if (!bar) return;
+
+  const lang = currentLang();
+  const t = (key, fallback) => (window.DonChickoI18n ? window.DonChickoI18n.t(key) : fallback);
+
+  const allBtn = document.createElement("button");
+  allBtn.type = "button";
+  allBtn.className = "filter-tab is-active";
+  allBtn.textContent = t("menuPage.tagAll", "All");
+  allBtn.dataset.tag = "";
+  allBtn.setAttribute("aria-pressed", "true");
+  bar.appendChild(allBtn);
+
+  Object.keys(TAG_LABELS).forEach((tag) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "filter-tab";
+    btn.textContent = TAG_LABELS[tag][lang];
+    btn.dataset.tag = tag;
+    btn.setAttribute("aria-pressed", "false");
+    bar.appendChild(btn);
+  });
+}
+
+/**
+ * Tag filter: clicking a tag hides every card that doesn't carry it, across
+ * all categories at once, independent of (and combinable with) the category
+ * jump-nav above it. "All" (or re-clicking the active tag) clears it. Cards
+ * are hidden via the `hidden` attribute rather than re-rendered, so this
+ * never re-triggers the scroll-reveal animation on already-visible cards.
+ */
+function initTagFilter() {
+  const bar = document.getElementById("menuTagbar");
+  if (!bar) return;
+
+  function t(key, fallback) {
+    return window.DonChickoI18n ? window.DonChickoI18n.t(key) : fallback;
+  }
+
+  function applyFilter(tag) {
+    bar.querySelectorAll(".filter-tab").forEach((btn) => {
+      const isActive = btn.dataset.tag === tag;
+      btn.classList.toggle("is-active", isActive);
+      btn.setAttribute("aria-pressed", String(isActive));
+    });
+
+    document.querySelectorAll(".menu-category").forEach((section) => {
+      let visibleCount = 0;
+      section.querySelectorAll(".ticket-card[data-item-name]").forEach((card) => {
+        const item = MENU_ITEMS.find((i) => i.name === card.dataset.itemName);
+        const matches = !tag || (item && item.tags.includes(tag));
+        card.hidden = !matches;
+        if (matches) visibleCount++;
+      });
+
+      const count = section.querySelector(".menu-category-count");
+      if (count) count.textContent = formatItemCount(visibleCount, currentLang());
+
+      let empty = section.querySelector(".menu-category-empty");
+      if (visibleCount === 0) {
+        if (!empty) {
+          empty = document.createElement("p");
+          empty.className = "menu-category-empty";
+          section.querySelector(".menu-grid").after(empty);
+        }
+        empty.textContent = t("menuPage.noMatch", "No items match this filter.");
+      } else if (empty) {
+        empty.remove();
+      }
+    });
+  }
+
+  bar.addEventListener("click", (e) => {
+    const btn = e.target.closest(".filter-tab");
+    if (!btn || !bar.contains(btn)) return;
+    const clickedTag = btn.dataset.tag;
+    const currentlyActive = bar.querySelector(".filter-tab.is-active");
+    const nextTag = currentlyActive && currentlyActive.dataset.tag === clickedTag && clickedTag !== "" ? "" : clickedTag;
+    applyFilter(nextTag);
+  });
+}
+
 /**
  * Highlight the jump link for whichever category is currently in view, and
  * keep that link scrolled into sight inside the horizontal jump bar.
@@ -355,6 +452,32 @@ function initCategorySpy() {
   );
   window.addEventListener("resize", updateActive);
   updateActive();
+}
+
+/* ==========================================================================
+   CATEGORY JUMP BAR — EDGE FADES
+   scrollbar-width: none hides the native scrollbar hint on .menu-filters, so
+   nothing signals the 14-category chip row scrolls sideways. These fades
+   are that cue — toggled by real scroll position (not just shown always) so
+   a fade never implies hidden content in a direction that has none. Uses
+   Math.abs(scrollLeft) rather than its sign so it reads correctly in both
+   LTR and RTL, where scrollLeft's zero point and direction differ.
+   ========================================================================== */
+function initJumpbarFade() {
+  const filters = document.getElementById("menuFilters");
+  const wrap = document.querySelector(".menu-filters-wrap");
+  if (!filters || !wrap) return;
+
+  function update() {
+    const max = filters.scrollWidth - filters.clientWidth;
+    const pos = Math.abs(filters.scrollLeft);
+    wrap.classList.toggle("is-scrolled", pos > 2);
+    wrap.classList.toggle("has-more", pos < max - 2);
+  }
+
+  filters.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
 }
 
 /* ==========================================================================
@@ -468,7 +591,10 @@ document.addEventListener("DOMContentLoaded", () => {
   renderFeatured();
   renderMenuCategories();
   renderCategoryJumpLinks();
+  renderTagFilters();
   initCategorySpy();
+  initJumpbarFade();
+  initTagFilter();
   initMobileNav();
   initHeroSlideToggle();
 
