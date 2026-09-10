@@ -608,6 +608,7 @@ html.lang-preset #langOverlay { display: none; }
   object-fit: cover;
   object-position: center 40%;
 }
+[dir="ltr"] .hero-slide-wraps-fries img { transform: scaleX(-1); }
 @keyframes hero-slide-scroll {
   0% { transform: translateX(100%); }
   5% { transform: translateX(0%); }
