@@ -1250,19 +1250,21 @@ html.lang-preset #langOverlay { display: none; }
   z-index: -1;
   opacity: 0.9;
 }
-.visit-visual .flame-shape {
-  width: 110px;
-  height: 135px;
-  color: var(--brand-cream);
-  opacity: 0.9;
+.visit-map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
 }
-.visit-visual-label {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  color: var(--brand-cream);
-  text-align: center;
-  padding: 0 var(--space-md);
+.directions-link {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-weight: 600;
+  color: var(--brand-orange);
 }
+.directions-link:hover, .directions-link:focus-visible { text-decoration: underline; }
 
 /* ==========================================================================
    FOOTER
